@@ -1,6 +1,6 @@
-import React from "react";
-import Logo from "../assets/Logo_conversations.png";
-import BackButton from "./BackButton";
+import React from 'react';
+import Logo from '../assets/Logo_conversations.png';
+import BackButton from './BackButton';
 
 const NavBar = () => {
 

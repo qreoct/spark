@@ -1,20 +1,20 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch, Route
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import SoloGame from "./pages/SoloGame";
-import Game from "./pages/Game";
-import Profile from "./pages/Profile";
-import About from "./pages/About";
-import MenuHeader from "./components/MenuHeader";
-import MenuRouter from "./components/MenuRouter";
-import PicturePage from "./pages/PicturePage";
+import SoloGame from './pages/SoloGame';
+import Game from './pages/Game';
+import Profile from './pages/Profile';
+import About from './pages/About';
+import MenuHeader from './components/MenuHeader';
+import MenuRouter from './components/MenuRouter';
+import PicturePage from './pages/PicturePage';
 
 const App = () => {
 
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState('home');
 
   const navigate = (target) => {
     setPage(target);

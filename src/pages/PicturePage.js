@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import {connect} from "react-redux";
+import React, { useEffect } from 'react';
+import {connect} from 'react-redux';
 
-import Picture from "../components/Picture";
+import Picture from '../components/Picture';
 
-import {fetchPicture} from "../actions/picturesActions";
+import {fetchPicture} from '../actions/picturesActions';
 
-import "../styles/index.css";
-import BackButton from "../components/BackButton";
-import LinkButton from "../components/LinkButton";
+import '../styles/index.css';
+import BackButton from '../components/BackButton';
+import LinkButton from '../components/LinkButton';
 
 const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
 
@@ -19,7 +19,7 @@ const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
 
-    console.log(pictures);
+    console.log('pictures ' + pictures);
 
     return <Picture key={pictures.id} data={pictures} />;
   };

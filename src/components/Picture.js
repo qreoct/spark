@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Picture = ({data}) => {
 
@@ -10,11 +10,11 @@ const Picture = ({data}) => {
     } else {
       return (
         <div className="game__picture">
-          <a href={data.links.html}>
+          <a href={data.links.html} target="_blank" rel="noreferrer">
             <img src={data.urls.small} alt={data.alt_description} className="card__picture--thumb"/>
           </a>
           <p> Picture by&nbsp;
-            <a href={data.links.html } className="link">{data.user.name}</a> on &nbsp;
+            <a href={data.links.html} className="link">{data.user.name}</a> on &nbsp;
             <a href="https://unsplash.com" className="link">Unsplash</a>
           </p>
         </div>

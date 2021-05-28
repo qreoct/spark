@@ -1,42 +1,42 @@
-import React from "react";
-import NavBar from "../components/NavBar";
-import "../styles/index.css";
+import React from 'react';
+import NavBar from '../components/NavBar';
+import '../styles/index.css';
 
 const Profile = () => {
 
   
   const containerStyle = {
-    color: "white",
-    borderRadius: "10px",
-    background: "linear-gradient(25deg, #292929, #3d3d3d)",
-    padding: "20px 10px"
+    color: 'white',
+    borderRadius: '10px',
+    background: 'linear-gradient(25deg, #292929, #3d3d3d)',
+    padding: '20px 10px'
   };
 
   const titleStyle = {
-    color: "white"
+    color: 'white'
   };
 
   const entryStyle = {
-    display: "flex",
-    padding: "30px 10px"
+    display: 'flex',
+    padding: '30px 10px'
   };
 
   const separatorStyle = {
-    color: "#e5e5e5",
-    width: "15px"
+    color: '#e5e5e5',
+    width: '15px'
   };
 
   const dateStyle = {
-    color: "white",
-    fontWeight: "600",
-    padding: "0px 50px",
-    justifyContent: "center",
-    flexDirection: "column",
-    display: "flex"
+    color: 'white',
+    fontWeight: '600',
+    padding: '0px 50px',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    display: 'flex'
   };
 
   const contentStyle = {
-    color: "white"
+    color: 'white'
   };
 
   return (

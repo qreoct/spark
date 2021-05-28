@@ -1,4 +1,4 @@
-import * as actions from "../actions/picturesActions";
+import * as actions from '../actions/picturesActions';
 
 export const initialState = {
   pictures: {},

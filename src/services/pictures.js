@@ -1,10 +1,10 @@
-const getPictureFromUnsplash = async () => {
-  // eslint-disable-next-line no-undef
-  const response = await fetch("https://api.unsplash.com/photos/random?client_id=" + `${process.env.REACT_APP_UNSPLASH_API_KEY}`, {
-    method: "GET"
-  });
+import axios from 'axios'
+const baseUrl = '/api/pictures'
 
-  return response;
+const getPictureFromUnsplash = async () => {
+  const res = await axios.get(`${baseUrl}/random`)
+
+  return res.data;
 };
 
-export default { getPictureFromUnsplash };
+export default { getPictureFromUnsplash }

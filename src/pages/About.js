@@ -1,6 +1,6 @@
-import React from "react";
-import BackButton from "../components/BackButton.js";
-import "../styles/index.css";
+import React from 'react';
+import BackButton from '../components/BackButton.js';
+import '../styles/index.css';
 
 const About = () => {
 

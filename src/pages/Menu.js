@@ -1,6 +1,6 @@
-import React from "react";
-import MenuRouter from "../components/MenuRouter";
-import "../styles/index.css";
+import React from 'react';
+import MenuRouter from '../components/MenuRouter';
+import '../styles/index.css';
 
 const Menu = () => {
 

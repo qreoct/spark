@@ -1,47 +1,43 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es2021": true
+  'env': {
+    'browser': true,
+    'commonjs': true,
+    'es2021': true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
+  'extends': [
+    'eslint:recommended',
+    'plugin:react/recommended'
   ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+  'parserOptions': {
+    'ecmaFeatures': {
+      'jsx': true
     },
-    "ecmaVersion": 12,
-    "sourceType": "module"
+    'ecmaVersion': 12,
+    'sourceType': 'module'
   },
-  "plugins": [
-    "react"
+  'plugins': [
+    'react'
   ],
-  "rules": {
-    "indent": [
-      "warn",
+  'rules': {
+    'indent': [
+      'warn',
       2
     ],
-    "linebreak-style": [
-      "warn",
-      "unix"
+    'linebreak-style': [
+      'warn',
+      'unix'
     ],
-    "quotes": [
-      "warn",
-      "double"
+    'quotes': [
+      'warn',
+      'single'
     ],
-    "semi": [
-      "warn",
-      "always"
+    'no-unused-vars': [
+      'warn'
     ],
-    "no-unused-vars": [
-      "warn"
+    'arrow-spacing': [
+      'error', { 'before': true, 'after': true }
     ],
-    "arrow-spacing": [
-      "error", { "before": true, "after": true }
-    ],
-    "no-console": 0,
-    "react/prop-types": 0
+    'no-console': 0,
+    'react/prop-types': 0
   }
 };

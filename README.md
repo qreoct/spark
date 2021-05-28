@@ -10,12 +10,14 @@ This repository contains the frontend for SPARK.
 
 <details>
   <summary>To work on</summary>
+
   - [ ] Text Card Component
   - [ ] Picture Card Component
   - [ ] Picture Card Lightbox
   - [ ] Hook up to a backend
   - [ ] Swipe action for Text Card
   - [ ] More CSS
+  - [ ] Proper error handling for Unsplash API call
 </details>
 
 # Getting Started
@@ -23,5 +25,6 @@ This repository contains the frontend for SPARK.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Create an .env file with your [Unsplash API Access Key](https://unsplash.com/developers).
+
 **Note**: Do **NOT** publish your API key in any React build; it will be accessible publicly. Use a backend instead.
 
