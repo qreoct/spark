@@ -1,4 +1,4 @@
-:root{
+:root {
   --black: #141414;
   --grey: #292929;
   --grey-l: #3d3d3d;
@@ -11,19 +11,35 @@
   --pink: #e37246;
   --purple: #8737eb;
 
-  --gradient-spark: linear-gradient(113deg, rgba(215,41,139,1) 0%, rgba(89,252,247,1) 50%, rgba(251,214,81,1) 74%, rgba(255,255,255,1) 120%);
+  --gradient-spark: linear-gradient(
+    113deg,
+    rgba(215, 41, 139, 1) 0%,
+    rgba(89, 252, 247, 1) 50%,
+    rgba(251, 214, 81, 1) 74%,
+    rgba(255, 255, 255, 1) 120%
+  );
   --gradient-jade: linear-gradient(90deg, #5bf0f7, #93f9b1 83%, #fffebc 100%);
-  --gradient-topaz: linear-gradient(124deg, var(--cyan), #e65ef4 80%, var(--purple) 100%);
+  --gradient-topaz: linear-gradient(
+    124deg,
+    var(--cyan),
+    #e65ef4 80%,
+    var(--purple) 100%
+  );
   --gradient-amethyst: linear-gradient(82deg, #fe239d, #81ace7);
-  --gradient-amber: linear-gradient(99deg, var(--yellow), var(--orange) 20%, var(--magenta) 100%);
+  --gradient-amber: linear-gradient(
+    99deg,
+    var(--yellow),
+    var(--orange) 20%,
+    var(--magenta) 100%
+  );
 
   --text-white: #e5e5e5c5;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,35 +50,58 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-p {margin-bottom: 1rem;}
+p {
+  margin-bottom: 1rem;
+}
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 3rem 0 1.38rem;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
   font-weight: 400;
   line-height: 1.3;
 }
 
-h1 {
+h1,
+.h1-size {
   margin-top: 0;
   font-size: 3.052rem;
 }
 
-h2 {font-size: 2.441rem;}
+h2,
+.h2-size {
+  font-size: 2.441rem;
+}
 
-h3 {font-size: 1.953rem;}
+h3,
+.h3-size {
+  font-size: 1.953rem;
+}
 
-h4 {font-size: 1.563rem;}
+h4,
+.h4-size {
+  font-size: 1.563rem;
+}
 
-h5 {font-size: 1.25rem;}
+h5,
+.h5-size {
+  font-size: 1.25rem;
+}
 
-small, .text_small {font-size: 0.8rem;}
+small,
+.text_small {
+  font-size: 0.8rem;
+}
 
-.link, .link:visited {
+.link,
+.link:visited {
   color: var(--text-white);
 }
 
@@ -80,13 +119,15 @@ small, .text_small {font-size: 0.8rem;}
   max-height: 67px;
 }
 
+/* 
 .debug {
   position: fixed;
   left: 0;
   top: 0;
-}
+} */
 
-.text__link, .text__link:visited {
+.text__link,
+.text__link:visited {
   color: white;
   text-decoration: none;
 }
@@ -142,18 +183,21 @@ small, .text_small {font-size: 0.8rem;}
   filter: brightness(1.1);
 }
 
-.menu__linkbutton--title, .menu__linkbutton--title:visited {
+.menu__linkbutton--title,
+.menu__linkbutton--title:visited {
   font-size: 2.441rem;
   line-height: 1.1;
   color: var(--white);
 }
 
-.menu__linkbutton--subtitle, .menu__linkbutton--subtitle:visited {
+.menu__linkbutton--subtitle,
+.menu__linkbutton--subtitle:visited {
   font-size: 1.25rem;
   color: var(--text-white);
 }
 
-.menu__linkbutton--back, .menu__linkbutton--back:visited {
+.menu__linkbutton--back,
+.menu__linkbutton--back:visited {
   color: var(--white);
   text-decoration: none;
   text-align: center;
@@ -199,15 +243,59 @@ small, .text_small {font-size: 0.8rem;}
   margin-bottom: 15vh;
 }
 
-.game__shuffle--btn { /* TODO - remove this temporary element!! */
+.game__shuffle--btn {
+  /* TODO - remove this temporary element!! */
   cursor: pointer;
 }
 
-/*                          card */
+/*                        picture card */
 
 .card__picture--thumb {
   border: 15px solid;
   border-width: 15px;
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
+}
+
+/*                      question card */
+
+.game__question-card {
+  border-radius: 20px;
+  padding: 60px 40px 20px 50px;
+  width: 50%;
+  min-width: 360px;
+  min-height: 200px;
+}
+
+.game__question-card--container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.game__question-card--title {
+  color: var(--grey);
+  margin-bottom: 2em;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.2em;
+}
+
+.game__question-card--yellow {
+  background-image: var(--gradient-amber);
+}
+
+.game__question-card--icons-container {
+  margin-left: 5px;
+}
+
+.game__question-card--icon {
+  color: var(--grey);
+  cursor: pointer;
+  padding: 0.1em;
+  transition: color 0.4s;
+}
+
+.game__question-card--icon:hover {
+  color: var(--text-white);
 }

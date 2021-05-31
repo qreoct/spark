@@ -24,7 +24,7 @@ export function fetchPicture() {
     try {
       const res = await picturesService.getPictureFromUnsplash();
 
-      const data = res.response;
+      const data = res;
 
       dispatch(getPictureSuccess(data));
     } catch (error) {

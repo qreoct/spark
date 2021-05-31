@@ -24,7 +24,7 @@ export function fetchQuestion() {
     try {
       const res = await questionsService.getSingleQuestion();
 
-      const data = res;
+      const data = res[Math.floor(Math.random() * res.length)];
 
       dispatch(getQuestionSuccess(data));
     } catch (error) {

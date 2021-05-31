@@ -19,8 +19,6 @@ const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
 
-    console.log('pictures ' + pictures);
-
     return <Picture key={pictures.id} data={pictures} />;
   };
 

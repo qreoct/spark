@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
 import Question from '../components/Question';
+import BackButton from '../components/BackButton';
+import LinkButton from '../components/LinkButton';
 
 import {fetchQuestion} from '../actions/questionsActions';
 
 import '../styles/index.css';
 
-import BackButton from '../components/BackButton';
 
 const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
 
@@ -26,6 +27,11 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
     <div>
       <h1> Solo game </h1>
       {renderQuestion()}
+
+      <div onClick={() => dispatch(fetchQuestion())} className="game__shuffle--btn">
+        <LinkButton title="shuffle" />
+      </div>
+
       <BackButton />
     </div>
   );
