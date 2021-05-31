@@ -255,6 +255,41 @@ small,
   border-width: 15px;
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
+  max-height: 40vh;
+}
+
+.card__picture:hover {
+  background-color: transparent;
+  z-index: 50;
+}
+
+.card__picture span {
+  position: absolute;
+  padding: 10px;
+  left: -1000px;
+  visibility: hidden;
+}
+
+.card__picture span img {
+  padding: 2px;
+  min-height: 40vh;
+  max-height: 70vh;
+  max-width: 60vw;
+}
+
+.card__picture:hover span {
+  visibility: visible;
+  top: 0;
+  left: 125px;
+}
+
+.card__picture--question {
+  background: var(--gradient-spark);
+  display: inline;
+  padding: 5px;
+  color: var(--grey);
+  font-size: 1.6em;
+  font-weight: 700;
 }
 
 /*                      question card */

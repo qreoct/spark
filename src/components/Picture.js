@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Picture = ({data}) => {
+const Picture = ({data, question}) => {
+
+  const qn = question || '';
 
   const renderPicture = () => {
     if (Object.keys(data).length === 0) {
@@ -10,11 +12,12 @@ const Picture = ({data}) => {
     } else {
       return (
         <div className="game__picture">
-          <a href={data.links.html} target="_blank" rel="noreferrer">
+          <a href={data.links.html} target="_blank" rel="noreferrer" className="card__picture">
             <img src={data.urls.small} alt={data.alt_description} className="card__picture--thumb"/>
+            <span> <img src={data.urls.regular} alt={data.alt_description} className="card__picture--full"/> </span>
           </a>
           <p> Picture by&nbsp;
-            <a href={data.links.html} className="link">{data.user.name}</a> on &nbsp;
+            <a href={data.links.html} className="link">{data.user.name}</a> from&nbsp;
             <a href="https://unsplash.com" className="link">Unsplash</a>
           </p>
         </div>
@@ -24,6 +27,10 @@ const Picture = ({data}) => {
 
   return (
     <div>
+      <div style={{marginBottom:'20px'}}>
+        <p className="card__picture--question"> {qn} </p>
+      </div>
+
       {renderPicture()}
     </div>
   );
