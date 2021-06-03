@@ -8,7 +8,6 @@ const Question = ({data}) => {
   let colors = ['game__question-card--yellow', 'game__question-card--magenta', 'game__question-card--cyan'];
   let isFavoritible = true;
 
-
   const renderQuestion = () => {
     if (Object.keys(data).length === 0) {
       // if initial data for question is not loaded yet

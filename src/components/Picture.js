@@ -12,7 +12,7 @@ const Picture = ({data, question}) => {
     } else {
       return (
         <div className="game__picture">
-          <a href={data.links.html} target="_blank" rel="noreferrer" className="card__picture">
+          <a href={`${data.links.html}?utm_source=spark&utm_medium=referral`} target="_blank" rel="noreferrer" className="card__picture">
             <img src={data.urls.small} alt={data.alt_description} className="card__picture--thumb"/>
             <span> <img src={data.urls.regular} alt={data.alt_description} className="card__picture--full"/> </span>
           </a>
