@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assets/Logo_conversations.png';
+import Logo from '../assets/Logo_conversations.svg';
 import BackButton from './BackButton';
 
 const NavBar = () => {
