@@ -16,13 +16,13 @@ const Question = ({data}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card + ${colors[0]}`}>
+        <div className={`game__question-card ${colors[0]}`}>
           <p className="game__question-card--title"> {data.question} </p>
 
           {isFavoritible 
             ? <div className="game__question-card--icons-container"> 
-              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x'/>
-              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x' />
+              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x' onClick={() => alert('fav')}/>
+              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x' onClick={() => alert('share')} />
             </div> 
             : <p> </p>
           }
@@ -32,7 +32,7 @@ const Question = ({data}) => {
   };
 
   return (
-    <div className="game__question-card--container">
+    <div className="game__question-card--content-container">
       {renderQuestion()}
     </div>
   );

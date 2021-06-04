@@ -294,21 +294,37 @@ small,
 
 /*                      question card */
 
+.slide-inner {
+  padding: 0 !important;
+  min-height: 200px !important;
+  height: 100% !important;
+  display: flex !important;
+}
+
 .game__question-card {
   border-radius: 20px;
   padding: 60px 40px 20px 50px;
-  width: 50%;
+  width: 50% !important;
   min-width: 360px;
   min-height: 200px;
+  height: fit-content !important;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
-.game__question-card--container {
-  display: flex;
-  align-content: center;
-  justify-content: center;
+/* to override the Slider library */
+.game__question-card--container div {
+  height: auto !important;
+  padding: auto !important;
+}
+
+.game__question-card--content-container {
+  align-content: flex-start;
 }
 
 .game__question-card--title {
+  font-family: "Montserrat";
   color: var(--grey);
   margin-bottom: 2em;
   font-weight: 700;
@@ -322,6 +338,7 @@ small,
 
 .game__question-card--icons-container {
   margin-left: 5px;
+  height: 0 !important;
 }
 
 .game__question-card--icon {

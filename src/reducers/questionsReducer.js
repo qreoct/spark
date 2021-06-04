@@ -1,7 +1,7 @@
 import * as actions from '../actions/questionsActions';
 
 export const initialState = {
-  questions: {},
+  questions: [],
   loading: false,
   hasErrors: false,
 };
