@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Question from '../components/Question';
 import BackButton from '../components/BackButton';
 import LinkButton from '../components/LinkButton';
+import TinderCard from 'react-tinder-card';
 
 import {fetchQuestion} from '../actions/questionsActions';
 
@@ -19,8 +20,17 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
   const renderQuestion = () => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
+
+    console.log(questions.map(q => q.question));
     
-    return <Question key={questions.id} data={questions} />
+    return <div className="game__question-card--container">
+      {questions.map(q => 
+        <TinderCard className="swipe" key={q.id} flickOnSwipe='false' preventSwipe={['down','up']}>
+          <Question key={q.id} data={q} />
+        </TinderCard>
+      )}
+    </div>
+    
   };
 
   return (

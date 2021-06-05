@@ -22,9 +22,10 @@ export function fetchQuestion() {
     dispatch(getQuestion());
 
     try {
-      const res = await questionsService.getSingleQuestion();
+      const res = await questionsService.getAllQuestions();
 
-      const data = res[Math.floor(Math.random() * res.length)];
+      const data = res;
+      // const data = res[Math.floor(Math.random() * res.length)];
 
       dispatch(getQuestionSuccess(data));
     } catch (error) {
