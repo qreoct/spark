@@ -19,8 +19,12 @@ const Question = ({data, isFavoritible=true}) => {
 
           {isFavoritible 
             ? <div className="game__question-card--icons-container"> 
-              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x' onClick={() => alert('fav' + data.question)}/>
-              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x' onClick={() => alert('share' + data.question)} />
+              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x'
+                onMouseUp={() => alert('fav' + data.question)} 
+                onTouchEnd={() => alert('fav')} />
+              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x'
+                onMouseUp={() => alert('share' + data.question)} 
+                onTouchEnd={() => alert('share')} />
             </div> 
             : <p> </p>
           }

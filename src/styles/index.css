@@ -254,7 +254,7 @@ small,
 }
 
 .modeicon {
-  height: 20%;
+  max-width: 300px;
   position: absolute;
   top: 55%;
   left: 50%;
