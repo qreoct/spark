@@ -33,3 +33,19 @@ export function fetchQuestion() {
     }
   };
 }
+
+export function fetchQuestionsFromCategory(category) {
+  return async (dispatch) => {
+    dispatch(getQuestion());
+
+    try {
+      const res = await questionsService.getAllQuestionsFromCategory(category);
+
+      const data = res;
+
+      dispatch(getQuestionSuccess(data));
+    } catch (error) {
+      dispatch(getQuestionFailure());
+    }
+  }
+}

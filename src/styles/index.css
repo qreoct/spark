@@ -210,6 +210,14 @@ small,
 
 /*                              game */
 
+.game__container {
+  flex-direction: column;
+  display: flex;
+  height: 90vh;
+  width: 50%;
+  min-width: 400px; /* temp?! */
+}
+
 .game__navbar {
   display: flex;
   position: fixed;
@@ -243,6 +251,16 @@ small,
 .game__shuffle--btn {
   /* TODO - remove this temporary element!! */
   cursor: pointer;
+}
+
+.modeicon {
+  height: 20%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  filter: opacity(0.8);
 }
 
 /*                        picture card */

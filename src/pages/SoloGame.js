@@ -3,10 +3,9 @@ import {connect} from 'react-redux';
 
 import Question from '../components/Question';
 import BackButton from '../components/BackButton';
-import LinkButton from '../components/LinkButton';
 import TinderCard from 'react-tinder-card';
 
-import {fetchQuestion} from '../actions/questionsActions';
+import {fetchQuestionsFromCategory} from '../actions/questionsActions';
 
 import '../styles/index.css';
 
@@ -14,19 +13,17 @@ import '../styles/index.css';
 const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
 
   useEffect(() => {
-    dispatch(fetchQuestion());
+    dispatch(fetchQuestionsFromCategory('solo'));
   }, [dispatch]);
 
   const renderQuestion = () => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
-
-    console.log(questions.map(q => q.question));
     
     return <div className="game__question-card--container">
       {questions.map(q => 
         <TinderCard className="swipe" key={q.id} flickOnSwipe='false' preventSwipe={['down','up']}>
-          <Question key={q.id} data={q} />
+          <Question key={q.id} data={q} isFavoritible={false}/>
         </TinderCard>
       )}
     </div>
@@ -37,10 +34,6 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
     <div>
       <h1> Solo game </h1>
       {renderQuestion()}
-
-      <div onClick={() => dispatch(fetchQuestion())} className="game__shuffle--btn">
-        <LinkButton title="shuffle" />
-      </div>
 
       <BackButton />
     </div>

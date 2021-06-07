@@ -3,11 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Question = ({data}) => {
+const Question = ({data, isFavoritible=true}) => {
 
   let colors = ['game__question-card--yellow', 'game__question-card--magenta', 'game__question-card--cyan'];
-  let isFavoritible = true;
-
 
   const renderQuestion = () => {
     if (Object.keys(data).length === 0) {
