@@ -27,7 +27,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     
     return <div className="game__question-card--container">
       {shuffle(questions).map(q => 
-        <TinderCard className="swipe" key={q.id} flickOnSwipe='false' preventSwipe={['down','up']}>
+        <TinderCard className="swipe" key={q.id} flickOnSwipe='false'>
           <Question key={q.id} data={q} />
         </TinderCard>
       )}

@@ -14,7 +14,7 @@ const Question = ({data, isFavoritible=true}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card ${colors[0]}`}>
+        <div className={`game__question-card ${colors[Math.floor(Math.random() * 3)]}`}>
           <p className="game__question-card--title"> {data.question} </p>
 
           {isFavoritible 

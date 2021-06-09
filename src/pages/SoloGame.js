@@ -22,7 +22,7 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
     
     return <div className="game__question-card--container">
       {questions.map(q => 
-        <TinderCard className="swipe" key={q.id} flickOnSwipe='false' preventSwipe={['down','up']}>
+        <TinderCard className="swipe" key={q.id} flickOnSwipe='false'>
           <Question key={q.id} data={q} isFavoritible={false}/>
         </TinderCard>
       )}
