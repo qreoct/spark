@@ -36,6 +36,15 @@
   --text-white: #e5e5e5c5;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* fixing mobile viewport */
+  height: -webkit-fill-available;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "Roboto",
@@ -150,7 +159,7 @@ small,
   display: flex;
   height: 70vh;
   width: 50%;
-  min-width: 400px; /* TODO: temporary workaround for responsive */
+  min-width: 350px; /* TODO: temporary workaround for responsive */
 }
 
 .menu__navigation--container {
@@ -214,21 +223,29 @@ small,
   flex-direction: column;
   display: flex;
   height: 90vh;
-  width: 50%;
-  min-width: 400px; /* temp?! */
+  width: 100%;
+  min-width: 350px; /* temp?! */
 }
 
-.game__navbar {
+.navbar {
   display: flex;
-  position: fixed;
   width: 100%;
   height: 10vh;
+  min-height: 120px;
   bottom: 0;
   left: 0;
   padding: 10px 0px;
   justify-content: center;
   align-items: center;
   background-color: var(--black);
+}
+
+.profile__navbar {
+  position: fixed;
+}
+
+.game__navbar {
+  position: absolute;
 }
 
 .game__navbar--back {
@@ -245,7 +262,7 @@ small,
 }
 
 .game__profile--container {
-  margin-bottom: 15vh;
+  margin-bottom: 20vh;
 }
 
 .game__shuffle--btn {
@@ -256,11 +273,11 @@ small,
 .modeicon {
   max-width: 300px;
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  filter: opacity(0.8);
+  filter: opacity(0.5) brightness(1.4);
 }
 
 /*                        picture card */
@@ -271,6 +288,7 @@ small,
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
   max-height: 40vh;
+  max-width: 80vw;
 }
 
 .card__picture:hover {
@@ -327,12 +345,20 @@ small,
   flex-direction: column;
 }
 
+@media (max-width: 680px) {
+  /* mobile cards can be slightly taller */
+  .game__question-card {
+    height: 45vh;
+    max-height: 350px;
+  }
+}
+
 .game__question-card--container {
   overflow: hidden !important;
   display: flex;
   align-content: center;
   justify-content: center;
-  height: 35vh;
+  height: 90vh;
   width: auto;
   position: relative;
 }
@@ -356,6 +382,7 @@ small,
   font-size: 1.8rem;
   line-height: 1.2em;
   height: 150px;
+  word-break: break-word;
 }
 
 .game__question-card--yellow {

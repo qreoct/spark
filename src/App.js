@@ -25,8 +25,7 @@ const App = () => {
   return (
     <Router>
       <div className="site__container">
-        
-            
+                    
         <Switch>
           <Route path="/online">
             <div className="game__container">
@@ -59,7 +58,7 @@ const App = () => {
           <Route path="/profile">
             <div className="menu__content--container">
               <div className="menu__content--data">
-                <Profile />
+                <Profile mode={mode}/>
               </div>
             </div>
           </Route>

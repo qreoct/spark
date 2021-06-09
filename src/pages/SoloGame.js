@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
 import Question from '../components/Question';
-import BackButton from '../components/BackButton';
+import NavBar from '../components/NavBar';
 import TinderCard from 'react-tinder-card';
 
 import {fetchQuestionsFromCategory} from '../actions/questionsActions';
@@ -32,10 +32,9 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
 
   return (
     <div>
-      <h1> Solo game </h1>
       {renderQuestion()}
 
-      <BackButton />
+      <NavBar />
     </div>
   );
 

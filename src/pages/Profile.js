@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import '../styles/index.css';
 
-const Profile = () => {
+const Profile = ({mode}) => {
 
   
   const containerStyle = {
@@ -83,7 +83,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <NavBar />
+      <NavBar mode={mode}/>
     </div>
   );
 
