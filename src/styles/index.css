@@ -270,6 +270,13 @@ small,
   cursor: pointer;
 }
 
+.game__picture-page {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 .modeicon {
   max-width: 300px;
   position: absolute;
