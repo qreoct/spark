@@ -390,6 +390,7 @@ small,
   line-height: 1.2em;
   height: 150px;
   word-break: break-word;
+  pointer-events: none;
 }
 
 .game__question-card--yellow {
@@ -406,6 +407,7 @@ small,
 
 .game__question-card--icons-container {
   margin-left: 5px;
+  pointer-events: none;
 }
 
 .game__question-card--icon {
@@ -413,8 +415,13 @@ small,
   cursor: pointer;
   padding: 0.1em;
   transition: color 0.4s;
+  pointer-events: all;
 }
 
 .game__question-card--icon:hover {
   color: var(--text-white);
+}
+
+.container {
+  height: 60vh !important;
 }

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import Question from '../components/Question';
-import TinderCard from 'react-tinder-card';
+import QuestionStack from '../components/QuestionStack';
 import NavBar from '../components/NavBar';
 
 import {fetchQuestionsFromCategory} from '../actions/questionsActions';
@@ -25,13 +24,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
     
-    return <div className="game__question-card--container">
-      {shuffle(questions).map(q => 
-        <TinderCard className="swipe" key={q.id} flickOnSwipe='false'>
-          <Question key={q.id} data={q} />
-        </TinderCard>
-      )}
-    </div>
+    return <QuestionStack questions={shuffle(questions)} isFavoritible={true}/>
   };
 
   const renderMode = () => {

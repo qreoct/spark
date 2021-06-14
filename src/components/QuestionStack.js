@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import TinderCard from 'react-tinder-card';
 import Question from '../components/Question';
+import {Card, CardWrapper} from 'react-swipeable-cards';
 
-const QuestionStack = ({questions}) => {
+const QuestionStack = ({questions, isFavoritible}) => {
 
   const [qnList, setQnList] = useState([]);
-  let idx = 0;
-  const [index, setIndex] = useState(idx);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     setQnList(questions.slice(0,5));
@@ -14,30 +13,26 @@ const QuestionStack = ({questions}) => {
 
   const handleSwipe = () => {
     let offset = 5;
-    setIndex({index} + 1);
-    console.log(index, index+offset);
+    setIndex(index + 1);
     setQnList(questions.slice(index, index+offset));
+  }
 
-    // let popped = questions.splice(0,1);
-    // let newList = qnList.slice(1);
-    // setQnList(newList.concat(popped));
+  const clearStyle = {
+    background: 'transparent',
+    border: 'none',
+    overflow: 'visible',
+    height: 'auto',
+    maxWidth: 'none'
   }
 
   return (
-    <div className="game__question-card--container">
-      {qnList.reverse().map(q => 
-        <TinderCard className="swipe" key={q.id} flickOnSwipe='false' onSwipe={handleSwipe}>
-          <Question key={q.id} data={q} isFavoritible={false}/>
-        </TinderCard>
+    <CardWrapper className="game__question-card--container">
+      {qnList.map(q => 
+        <Card key={q.id} onSwipe={handleSwipe} style={clearStyle}>
+          <Question data={q} isFavoritible={isFavoritible}/>
+        </Card>
       )}
-
-      <ul style={{padding:'500px'}}>
-        {qnList.length}
-        {qnList.reverse().map(q => 
-          <li key={`${q.id}2`}> {q.question} </li>
-        )}
-      </ul>
-    </div>
+    </CardWrapper>
   );
 };
 

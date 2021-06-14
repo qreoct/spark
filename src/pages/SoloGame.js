@@ -19,22 +19,12 @@ const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
     
-    return <QuestionStack questions={questions} />
-    
-    // <div className="game__question-card--container">
-    //   {questions.map(q => 
-    //     <TinderCard className="swipe" key={q.id} flickOnSwipe='false'>
-    //       <Question key={q.id} data={q} isFavoritible={false}/>
-    //     </TinderCard>
-    //   )}
-    // </div>
-    
+    return <QuestionStack questions={questions} isFavoritible={false} />
   };
 
   return (
     <div>
       {renderQuestion()}
-
       <NavBar />
     </div>
   );
