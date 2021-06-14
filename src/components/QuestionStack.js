@@ -9,6 +9,7 @@ const QuestionStack = ({questions, isFavoritible}) => {
 
   useEffect(() => {
     setQnList(questions.slice(0,5));
+    handleSwipe()
   }, []);
 
   const handleSwipe = () => {
