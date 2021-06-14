@@ -22,7 +22,7 @@ const QuestionStack = ({questions, isFavoritible}) => {
     border: 'none',
     overflow: 'visible',
     height: 'auto',
-    maxWidth: 'none'
+    maxWidth: '800px'
   }
 
   return (

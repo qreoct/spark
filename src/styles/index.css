@@ -386,7 +386,7 @@ small,
   color: var(--grey);
   margin-bottom: 2em;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: calc(1em + 1vh);
   line-height: 1.2em;
   height: 150px;
   word-break: break-word;
