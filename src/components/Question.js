@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Question = ({data}) => {
+const Question = ({data, isFavoritible=true}) => {
 
   let colors = ['game__question-card--yellow', 'game__question-card--magenta', 'game__question-card--cyan'];
-  let isFavoritible = true;
 
   const renderQuestion = () => {
     if (Object.keys(data).length === 0) {
@@ -15,13 +14,17 @@ const Question = ({data}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card + ${colors[0]}`}>
+        <div className={`game__question-card ${colors[Math.floor(Math.random() * 3)]}`}>
           <p className="game__question-card--title"> {data.question} </p>
 
           {isFavoritible 
             ? <div className="game__question-card--icons-container"> 
-              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x'/>
-              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x' />
+              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x'
+                onMouseUp={() => alert('fav' + data.question)} 
+                onTouchEnd={() => alert('fav')} />
+              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x'
+                onMouseUp={() => alert('share' + data.question)} 
+                onTouchEnd={() => alert('share')} />
             </div> 
             : <p> </p>
           }
@@ -31,7 +34,7 @@ const Question = ({data}) => {
   };
 
   return (
-    <div className="game__question-card--container">
+    <div className="game__question-card--content-container">
       {renderQuestion()}
     </div>
   );

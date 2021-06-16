@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import Question from '../components/Question';
-import BackButton from '../components/BackButton';
-import LinkButton from '../components/LinkButton';
+import QuestionStack from '../components/QuestionStack';
+import NavBar from '../components/NavBar';
 
-import {fetchQuestion} from '../actions/questionsActions';
+import {fetchQuestionsFromCategory} from '../actions/questionsActions';
 
 import '../styles/index.css';
 
@@ -13,26 +12,20 @@ import '../styles/index.css';
 const SoloGame = ({dispatch, loading, questions, hasErrors}) => {
 
   useEffect(() => {
-    dispatch(fetchQuestion());
+    dispatch(fetchQuestionsFromCategory('solo'));
   }, [dispatch]);
 
   const renderQuestion = () => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
     
-    return <Question key={questions.id} data={questions} />
+    return <QuestionStack questions={questions} isFavoritible={false} />
   };
 
   return (
     <div>
-      <h1> Solo game </h1>
       {renderQuestion()}
-
-      <div onClick={() => dispatch(fetchQuestion())} className="game__shuffle--btn">
-        <LinkButton title="shuffle" />
-      </div>
-
-      <BackButton />
+      <NavBar />
     </div>
   );
 

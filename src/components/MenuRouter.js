@@ -29,7 +29,7 @@ const MenuRouter = ({setPage, setMode}) => {
     return (
       <div>
         <div className="menu__router--container">
-          <Link to="/solo" onClick={() => setPage('solo')}> <LinkButton key="Solo" title="Solo" subtitle="Self journey"/> </Link>
+          <Link to="/solo" onClick={() => {setPage('solo'); setMode('solo')}}> <LinkButton key="Solo" title="Solo" subtitle="Self journey"/> </Link>
           <Link to="/" onClick={() => setMenu('mode')}> <LinkButton key="Group" title="Group" subtitle="Group fun!"/> </Link>
           <Link to="/online" onClick={() => setPage('online')}> <LinkButton key="Online" title="Online" subtitle="Play with friends or strangers!"/> </Link>
         </div>
@@ -42,7 +42,7 @@ const MenuRouter = ({setPage, setMode}) => {
     return (
       <div className="menu__router--container">
         <Link to="/" onClick={() => setMenu('player')}> <LinkButton key="Play" title="Play" subtitle="Spark meaningful conversations"/> </Link>
-        <Link to="/profile" onClick={() => setPage('profile')}> <LinkButton key="Profile" title="Profile" subtitle="Your profile"/> </Link>
+        <Link to="/profile" onClick={() => {setPage('profile'); setMode('profile')}}> <LinkButton key="Profile" title="Profile" subtitle="Your profile"/> </Link>
         <Link to="/about" onClick={() => setPage('about')}> <LinkButton key ="About" title="About"/> </Link>
       </div>
     );

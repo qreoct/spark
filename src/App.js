@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import SoloGame from './pages/SoloGame';
-import Game from './pages/Game';
+import GroupGame from './pages/GroupGame';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
@@ -25,38 +25,52 @@ const App = () => {
   return (
     <Router>
       <div className="site__container">
-        
-        <div className="menu__content--container">
-          <div className="menu__content--data">
-            
-            <Switch>
-              <Route path="/online">
-                <OnlineGame />
-              </Route>
-              <Route path="/picture">
-                <PicturePage />
-              </Route>
-              <Route path="/game">
-                <Game mode={mode}/>
-              </Route>
-              <Route path="/solo">
-                <SoloGame />
-              </Route>
-              <Route path="/about">
+                    
+        <Switch>
+          <Route path="/online">
+            <div className="game__container">
+              <OnlineGame />
+            </div>
+          </Route>
+          <Route path="/picture">
+            <div className="game__container">
+              <PicturePage />
+            </div>
+          </Route>
+          <Route path="/game">
+            <div className="game__container">
+              <GroupGame mode={mode}/>
+            </div>
+          </Route>
+          <Route path="/solo">
+            <div className="game__container">
+              <SoloGame />
+            </div>
+          </Route>
+          <Route path="/about">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
                 <MenuHeader />
                 <About />
-              </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-              <Route path="/">
+              </div>
+            </div>
+          </Route>
+          <Route path="/profile">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
+                <Profile mode={mode}/>
+              </div>
+            </div>
+          </Route>
+          <Route path="/">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
                 <MenuHeader />
                 <MenuRouter setPage={navigate} setMode={setMode}/>
-              </Route>
-            </Switch>
-        
-          </div>
-        </div>
+              </div>
+            </div>
+          </Route>
+        </Switch>
 
 
       </div>

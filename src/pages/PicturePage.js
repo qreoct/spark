@@ -23,8 +23,7 @@ const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
   };
 
   return (
-    <div>
-      <h1> Picture Page </h1>
+    <div className="game__picture-page">
 
       <div>
         {renderPicture()}
