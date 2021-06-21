@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import { fas, faStar as faStar_solid} from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStar_solid} from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Util from '../utils/utils'
@@ -53,11 +53,11 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
           {isFavoritible 
             ? <div className="game__question-card--icons-container"> 
               <FontAwesomeIcon icon={favIcon} className="game__question-card--icon" size='3x'
-                onMouseUp={handleFav} 
+                onClick={handleFav} 
                 onTouchEnd={handleFav}
                 title={isFav ? 'Remove from favourites' : 'Add to favourites'} />
               <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x'
-                onMouseUp={handleShare} 
+                onClick={handleShare} 
                 onTouchEnd={handleShare}
                 title="Share" />
             </div> 
