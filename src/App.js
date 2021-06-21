@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/profile">
             <div className="menu__content--container">
               <div className="menu__content--data">
-                <Profile mode={mode}/>
+                <Profile mode={mode} setPage={navigate} setMode={setMode}/>
               </div>
             </div>
           </Route>

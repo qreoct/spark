@@ -4,7 +4,7 @@ import BackButton from './BackButton';
 
 const NavBar = ({mode}) => {
 
-  let type = mode === 'profile' ? 'profile' : 'game';
+  let type = mode === 'game' ? 'game' : 'profile';
 
   return (
     <div className={`navbar ${type}__navbar`}>

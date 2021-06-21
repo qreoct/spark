@@ -217,6 +217,27 @@ small,
   padding: 5px;
 }
 
+/*                           profile */
+
+.profile__container {
+  color: white;
+  border-radius: 10px;
+  background: linear-gradient(25deg, #292929, #3d3d3d);
+  padding: 20px 10px;
+}
+
+.game__profile--container a {
+  text-decoration: none;
+}
+
+.profile__container--active {
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+}
+
+.profile__container--active:hover {
+  box-shadow: 0 0 15px var(--white);
+}
 /*                              game */
 
 .game__container {
