@@ -11,7 +11,8 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
   const [isFav, setIsFav] = useState(false);
   const [favIcon, setFavIcon] = useState(faStar);
   
-  const handleFav = () => {
+  const handleFav = (e) => {
+    e.preventDefault();
     Util.toggleFromFavs(data);
     if (isFav) {
       displayToast('Removed from favourites');
