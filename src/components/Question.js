@@ -28,6 +28,10 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
         title: 'SPARK Meaningful Conversations',
         text: data.question,
       }).catch((error) => console.log('Error sharing', error))
+    } else {
+      navigator.clipboard.writeText(data.question).then(() => {
+        displayToast('Copied question to clipboard! Share it with your friends!')
+      })
     }
   }
 
