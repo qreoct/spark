@@ -36,7 +36,6 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
   }
 
   useEffect(() => {
-    console.log('is in Favs: ' + data.question   + ' ' + Util.isInFavs(data))
     setIsFav(Util.isInFavs(data));
   },[])
 

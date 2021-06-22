@@ -308,6 +308,17 @@ small,
   filter: opacity(0.5) brightness(1.4);
 }
 
+.active {
+  background-color: var(--black);
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.inactive {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
 /*                        picture card */
 
 .card__picture--thumb {

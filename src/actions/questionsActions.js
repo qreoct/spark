@@ -44,7 +44,6 @@ export function fetchQuestionsFromCategory(category) {
       let res;
       if (category === 'favourites') {
         res = await Util.readFavsFromStorage();
-        console.log('res is ' + res.map(r => r.question))
       } else {
         res = await questionsService.getAllQuestionsFromCategory(category);
       }

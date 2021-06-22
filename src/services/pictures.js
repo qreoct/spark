@@ -7,4 +7,11 @@ const getPictureFromUnsplash = async () => {
   return res.data;
 };
 
-export default { getPictureFromUnsplash }
+const pictureByTopic = async (topic) => {
+  const res = await axios.get(`${baseUrl}/topic/${topic}`)
+
+  console.log('picturebytopic service: ', res.data);
+  return res.data;
+}
+
+export default { getPictureFromUnsplash, pictureByTopic }

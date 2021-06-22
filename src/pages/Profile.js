@@ -11,7 +11,6 @@ const Profile = ({mode, setPage, setMode}) => {
   useEffect(() => {
     if (localStorage.getItem('favs')) {
       setFavs(Util.readFavsFromStorage());
-      console.log(Util.readFavsFromStorage());
     }
   }, []);
 
