@@ -1,37 +1,36 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
-import {connect} from 'react-redux';
+import picturesService from '../services/pictures'
 
-import {fetchPicture, pictureByTopic} from '../actions/picturesActions';
-
-const Picture = ({dispatch, data, pictures, topic, question, isActive}) => {
+const Picture = ({topic, question, isActive}) => {
 
   const qn = question || '';
 
-  console.log('topic: ' + topic);
+  const [data, setData] = useState({});
 
-  useEffect(() => {
-    if (data) { 
-      dispatch(fetchPicture());
+  useEffect(async () => {
+    if(topic) {
+      let res = await picturesService.pictureByTopic(topic);
+      setData(res);
     } else {
-      dispatch(pictureByTopic(topic));
+      let res = await picturesService.getPictureFromUnsplash();
+      setData(res);
     }
-  }, [dispatch])
+  }, [])
 
   const renderPicture = () => {
-    if (Object.keys(pictures).length === 0) {
+    if (Object.keys(data).length === 0) {
       // if initial data for picture is not loaded yet
       // (Default is an empty Object)
       return null;
     } else {
       return (
-        <div className='game__picture'>
-          <a href={`${pictures.links.html}?utm_source=spark&utm_medium=referral`} target="_blank" rel="noreferrer" className="card__picture">
-            <img src={pictures.urls.small} alt={pictures.alt_description} className="card__picture--thumb"/>
-            <span> <img src={pictures.urls.regular} alt={pictures.alt_description} className="card__picture--full"/> </span>
+        <div className='card__picture--container'>
+          <a href={`${data.links.html}?utm_source=spark&utm_medium=referral`} target="_blank" rel="noreferrer" className="card__picture">
+            <img src={data.urls.small} alt={data.alt_description} className="card__picture--thumb"/>
           </a>
           <p> Picture by&nbsp;
-            <a href={pictures.links.html} className="link">{pictures.user.name}</a> from&nbsp;
+            <a href={data.links.html} className="link">{data.user.name}</a> from&nbsp;
             <a href="https://unsplash.com" className="link">Unsplash</a>
           </p>
         </div>
@@ -40,7 +39,7 @@ const Picture = ({dispatch, data, pictures, topic, question, isActive}) => {
   };
 
   return (
-    <div className={`${isActive ? 'active' : 'inactive'}`}>
+    <div className={`${isActive ? 'active' : 'inactive'} card__picture`}>
       <div style={{marginBottom:'20px'}}>
         <p className="card__picture--question"> {qn} </p>
       </div>
@@ -50,11 +49,4 @@ const Picture = ({dispatch, data, pictures, topic, question, isActive}) => {
   );
 };
 
-
-const mapStateToProps = (state) => ({
-  loading: state.pictures.loading,
-  pictures: state.pictures.pictures,
-  hasErrors: state.pictures.hasErrors,
-});
-
-export default connect(mapStateToProps)(Picture);
+export default Picture;

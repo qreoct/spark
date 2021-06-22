@@ -19,7 +19,8 @@ const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
 
-    return <Picture key={pictures.id} data={pictures} question="What is a memory that this picture triggers?"/>;
+    return <Picture key={pictures.id} data={pictures} isActive={true}
+      question="What is a memory that this picture triggers?"/>;
   };
 
   return (

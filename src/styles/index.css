@@ -308,10 +308,18 @@ small,
   filter: opacity(0.5) brightness(1.4);
 }
 
-.active {
-  background-color: var(--black);
+.active:after {
+  background-image: linear-gradient(180deg, var(--black) 30%, #14141400 50%);
   opacity: 1;
   transition: all 0.5s;
+  width: 100%;
+  height: 80vh;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: -1;
 }
 
 .inactive {
@@ -321,6 +329,14 @@ small,
 
 /*                        picture card */
 
+.card__picture {
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .card__picture--thumb {
   border: 15px solid;
   border-width: 15px;
@@ -328,31 +344,6 @@ small,
   border-image-source: var(--gradient-amethyst);
   max-height: 40vh;
   max-width: 80vw;
-}
-
-.card__picture:hover {
-  background-color: transparent;
-  z-index: 50;
-}
-
-.card__picture span {
-  position: absolute;
-  padding: 10px;
-  left: -1000px;
-  visibility: hidden;
-}
-
-.card__picture span img {
-  padding: 2px;
-  min-height: 40vh;
-  max-height: 70vh;
-  max-width: 60vw;
-}
-
-.card__picture:hover span {
-  visibility: visible;
-  top: 0;
-  left: 125px;
 }
 
 .card__picture--question {

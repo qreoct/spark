@@ -10,6 +10,13 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
 
   const [isFav, setIsFav] = useState(false);
   const [favIcon, setFavIcon] = useState(faStar);
+  const [col, setColor] = useState(null);
+
+  useEffect(() => {
+    if (col == null) {
+      setColor(color);  
+    }
+  }, [])
   
   const handleFav = (e) => {
     e.preventDefault();
@@ -51,7 +58,7 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card game__question-card--${color}`}>
+        <div className={`game__question-card game__question-card--${col}`}>
           <p className="game__question-card--title"> {data.question} </p>
 
           {isFavoritible 

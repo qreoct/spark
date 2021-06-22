@@ -10,7 +10,8 @@ const getPictureFromUnsplash = async () => {
 const pictureByTopic = async (topic) => {
   const res = await axios.get(`${baseUrl}/topic/${topic}`)
 
-  console.log('picturebytopic service: ', res.data);
+  console.log('service called: ' + JSON.stringify(res.data));
+
   return res.data;
 }
 
