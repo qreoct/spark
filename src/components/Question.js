@@ -1,11 +1,49 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as faStar_solid} from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Question = ({data, isFavoritible=true}) => {
+import Util from '../utils/utils'
 
-  let colors = ['game__question-card--yellow', 'game__question-card--magenta', 'game__question-card--cyan'];
+const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
+
+  const [isFav, setIsFav] = useState(false);
+  const [favIcon, setFavIcon] = useState(faStar);
+  
+  const handleFav = (e) => {
+    e.preventDefault();
+    Util.toggleFromFavs(data);
+    if (isFav) {
+      displayToast('Removed from favourites');
+    } else {
+      displayToast('Added to favourites')
+    }
+    setIsFav(!isFav);
+  }
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'SPARK Meaningful Conversations',
+        text: data.question,
+      }).catch((error) => console.log('Error sharing', error))
+    } else {
+      navigator.clipboard.writeText(data.question).then(() => {
+        displayToast('Copied question to clipboard! Share it with your friends!')
+      })
+    }
+  }
+
+  useEffect(() => {
+    console.log('is in Favs: ' + data.question   + ' ' + Util.isInFavs(data))
+    setIsFav(Util.isInFavs(data));
+  },[])
+
+  useEffect(() => {
+    if (isFav) { setFavIcon(faStar_solid) }
+    else { setFavIcon(faStar) }
+  }, [isFav])
 
   const renderQuestion = () => {
     if (Object.keys(data).length === 0) {
@@ -14,17 +52,19 @@ const Question = ({data, isFavoritible=true}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card ${colors[Math.floor(Math.random() * 3)]}`}>
+        <div className={`game__question-card game__question-card--${color}`}>
           <p className="game__question-card--title"> {data.question} </p>
 
           {isFavoritible 
             ? <div className="game__question-card--icons-container"> 
-              <FontAwesomeIcon icon={faStar} className="game__question-card--icon" size='3x'
-                onMouseUp={() => alert('fav' + data.question)} 
-                onTouchEnd={() => alert('fav')} />
+              <FontAwesomeIcon icon={favIcon} className="game__question-card--icon" size='3x'
+                onClick={handleFav} 
+                onTouchEnd={handleFav}
+                title={isFav ? 'Remove from favourites' : 'Add to favourites'} />
               <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x'
-                onMouseUp={() => alert('share' + data.question)} 
-                onTouchEnd={() => alert('share')} />
+                onClick={handleShare} 
+                onTouchEnd={handleShare}
+                title="Share" />
             </div> 
             : <p> </p>
           }

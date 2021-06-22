@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import Favourites from '../components/Favourites';
 import NavBar from '../components/NavBar';
+import Util from '../utils/utils'
 import '../styles/index.css';
 
-const Profile = ({mode}) => {
+const Profile = ({mode, setPage, setMode}) => {
+
+  const [favs, setFavs] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem('favs')) {
+      setFavs(Util.readFavsFromStorage());
+      console.log(Util.readFavsFromStorage());
+    }
+  }, []);
 
   
   const containerStyle = {
@@ -44,9 +55,8 @@ const Profile = ({mode}) => {
       <div className="game__profile--container">
         <h1> My Profile </h1>
 
-        <div style={containerStyle}> 
-          <h1 style={titleStyle}> Favourites </h1>
-        You have 15 favourited cards
+        <div> 
+          <Favourites favs={favs} setPage={setPage} setMode={setMode}/>
         </div>
 
         <h1 style={titleStyle}> Journey </h1>

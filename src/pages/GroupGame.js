@@ -5,13 +5,14 @@ import QuestionStack from '../components/QuestionStack';
 import NavBar from '../components/NavBar';
 
 import {fetchQuestionsFromCategory} from '../actions/questionsActions';
-import {shuffle} from '../utils/shuffle';
+import Util from '../utils/utils';
 
 import logo_deep from '../assets/mode_deep.svg';
 import logo_icebreakers from '../assets/mode_icebreakers.svg';
 import logo_thisorthat from '../assets/mode_thisorthat.svg';
 
 import '../styles/index.css';
+import { toastful, Toastful } from 'react-toastful';
 
 
 const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
@@ -24,7 +25,8 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
     
-    return <QuestionStack questions={shuffle(questions)} isFavoritible={true}/>
+    return <QuestionStack questions={Util.shuffle(questions)}
+      isFavoritible={true} displayToast={displayToast}/>
   };
 
   const renderMode = () => {
@@ -40,12 +42,16 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     }
   }
 
+  const displayToast = (message) => {
+    toastful(message, {position: 'top', duration: 1500});
+  }
+
   return (
     <div>
       {renderQuestion()}
 
       {renderMode()}
-
+      <Toastful />
       <NavBar />
     </div>
   );
