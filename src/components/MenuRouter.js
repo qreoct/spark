@@ -7,9 +7,23 @@ import LinkButton from './LinkButton.js';
 
 const MenuRouter = ({setPage, setMode}) => {
 
-  const [page, setMenu] = useState('home');
+  const [menu, setMenu] = useState('home');
 
-  switch (page) {
+  switch (menu) {
+  case 'select-room':
+    return (
+      <div>
+        <div className="menu_router--container">
+          <Link to="/create" onClick={() => {setPage('create')}}><LinkButton key='Create' title="Create" subtitle="Click here to get your own unique room code" /></Link>
+          <Link to='/join' onClick={() => {setPage('join')}}><LinkButton key='Join' title='Join' subtitle='Click here to join an existing room' /></Link>
+          <Link to='/online' onClick={() => {setPage('online')}}><LinkButton key='Random' title='Random' subtitle='Click here to join a random room' /></Link>
+          <Link to='/chat' onClick={() => {setPage('chat')}}><LinkButton key='Chat' title='Chat' subtitle='This is for testing the chat app' /></Link>
+        </div>
+        <div className="menu__navigation--container">
+          <BackButton action={() => setMenu('player')}/>
+        </div>
+      </div>
+    )
   case 'mode':
     return (
       <div>
@@ -31,7 +45,7 @@ const MenuRouter = ({setPage, setMode}) => {
         <div className="menu__router--container">
           <Link to="/solo" onClick={() => {setPage('solo'); setMode('solo')}}> <LinkButton key="Solo" title="Solo" subtitle="Self journey"/> </Link>
           <Link to="/" onClick={() => setMenu('mode')}> <LinkButton key="Group" title="Group" subtitle="Group fun!"/> </Link>
-          <Link to="/online" onClick={() => setPage('online')}> <LinkButton key="Online" title="Online" subtitle="Play with friends or strangers!"/> </Link>
+          <Link to="/" onClick={() => setMenu('select-room')}> <LinkButton key="Online" title="Online" subtitle="Play with friends or strangers!"/> </Link>
         </div>
         <div className="menu__navigation--container">
           <BackButton action={() => setMenu('home')}/>

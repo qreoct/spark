@@ -425,3 +425,39 @@ small,
 .container {
   height: 60vh !important;
 }
+
+/*             Chatpage*/
+.online__chatContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #1A1A1D;
+}
+
+.online__chatForm {
+  display: flex;
+}
+
+.online__input {
+  border: none;
+  border-radius: 0;
+  padding: 3%;
+  width: 80%;
+  font-size: 1.2em;
+}
+
+.online__button {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #42b2f3;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  width: 20%;
+}
+
+.online__messages {
+  padding: 5% 0;
+  overflow: auto;
+  flex: auto;
+}
