@@ -13,7 +13,7 @@ const MenuRouter = ({setPage, setMode}) => {
   case 'select-room':
     return (
       <div>
-        <div className="menu_router--container">
+        <div className="menu__router--container">
           <Link to="/create" onClick={() => {setPage('create')}}><LinkButton key='Create' title="Create" subtitle="Click here to get your own unique room code" /></Link>
           <Link to='/join' onClick={() => {setPage('join')}}><LinkButton key='Join' title='Join' subtitle='Click here to join an existing room' /></Link>
           <Link to='/online' onClick={() => {setPage('online')}}><LinkButton key='Random' title='Random' subtitle='Click here to join a random room' /></Link>

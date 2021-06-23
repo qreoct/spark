@@ -23,9 +23,9 @@ const ChatPage = () => {
 
   useEffect(() => {
     socket.on('message', (message) => { //message = {content, from, to}
-      setMessages([...messages, message])
+      setMessages(messages => messages.concat(message)) //I have no clue why its a function too
     })
-  }, [messages])
+  }, [])
 
   const history = useHistory()
 
