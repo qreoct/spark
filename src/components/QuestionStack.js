@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import Question from '../components/Question';
-import Picture from '../components/Picture';
+import QuestionCard from './QuestionCard';
+import PictureCard from './PictureCard';
 import {Card, CardWrapper} from 'react-swipeable-cards';
 
-const QuestionStack = ({questions, isFavoritible, displayToast}) => {
+const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
 
   const [qnList, setQnList] = useState([]);
   const [index, setIndex] = useState(0);
@@ -34,10 +34,9 @@ const QuestionStack = ({questions, isFavoritible, displayToast}) => {
       {qnList.map((q, idx) => 
         <Card key={q.id} onSwipe={handleSwipe} style={clearStyle}>
           {q.canPicture 
-            ? <Picture topic={q.topic} question={q.question} isActive={idx===0}/>
-            : <Question data={q} isFavoritible={isFavoritible} displayToast={displayToast}
-              color={colors[Math.floor(Math.random() * colors.length)]}
-            />
+            ? <PictureCard topic={q.topic} data={q} isActive={idx===0} mode={mode}/>
+            : <QuestionCard data={q} isFavoritible={isFavoritible} displayToast={displayToast}
+              color={colors[Math.floor(Math.random() * colors.length)]} mode={mode}/>
           }
         </Card>
       )}

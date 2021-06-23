@@ -259,6 +259,7 @@ small,
   justify-content: center;
   align-items: center;
   background-color: var(--black);
+  z-index: 1000; /* hacky fix to be above cards */
 }
 
 .profile__navbar {
@@ -308,6 +309,11 @@ small,
   filter: opacity(0.5) brightness(1.4);
 }
 
+.active {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
 .active:after {
   background-image: linear-gradient(180deg, var(--black) 30%, #14141400 50%);
   opacity: 1;
@@ -320,6 +326,7 @@ small,
   left: 0;
   display: block;
   z-index: -1;
+  border-radius: 30px;
 }
 
 .inactive {
@@ -335,15 +342,21 @@ small,
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 5px;
+  position: relative;
 }
 
 .card__picture--thumb {
   border: 15px solid;
-  border-width: 15px;
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
-  max-height: 40vh;
-  max-width: 80vw;
+  max-height: 30vh;
+  max-width: 25vw;
+}
+
+.card__picture--solo {
+  max-height: 60vh !important;
+  max-width: 80vw !important;
 }
 
 .card__picture--question {
@@ -353,6 +366,37 @@ small,
   color: var(--grey);
   font-size: 1.6em;
   font-weight: 700;
+}
+
+.card__picture--gallery {
+  display: flex;
+  width: 80vw;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 680px) {
+  /* mobile pictures must be smaller */
+  .card__picture--thumb {
+    border: 8px solid;
+    border-image-slice: 1;
+    border-image-source: var(--gradient-amethyst);
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  /* gallery also has to take up larger space */
+  .card__picture--gallery {
+    width: 100vw;
+    flex-direction: column;
+    max-height: 70vh;
+  }
+
+  /* active card also gets a bit more coverage */
+  .active:after {
+    background-image: linear-gradient(180deg, var(--black) 50%, #14141400 90%);
+  }
 }
 
 /*                      question card */
@@ -446,5 +490,5 @@ small,
 }
 
 .container {
-  height: 60vh !important;
+  height: 85vh !important;
 }

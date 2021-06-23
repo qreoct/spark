@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import Picture from '../components/Picture';
+import PictureCard from '../components/PictureCard';
 
 import {fetchPicture} from '../actions/picturesActions';
 
@@ -19,7 +19,7 @@ const PicturePage = ({dispatch, loading, pictures, hasErrors}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
 
-    return <Picture key={pictures.id} data={pictures} isActive={true}
+    return <PictureCard key={pictures.id} data={pictures} isActive={true}
       question="What is a memory that this picture triggers?"/>;
   };
 
