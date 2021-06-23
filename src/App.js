@@ -11,7 +11,6 @@ import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
 import MenuHeader from './components/MenuHeader';
 import MenuRouter from './components/MenuRouter';
-import PicturePage from './pages/PicturePage';
 
 const App = () => {
 
@@ -30,11 +29,6 @@ const App = () => {
           <Route path="/online">
             <div className="game__container">
               <OnlineGame />
-            </div>
-          </Route>
-          <Route path="/picture">
-            <div className="game__container">
-              <PicturePage />
             </div>
           </Route>
           <Route path="/game">
