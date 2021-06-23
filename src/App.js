@@ -12,8 +12,6 @@ import OnlineGame from './pages/OnlineGame';
 import MenuHeader from './components/MenuHeader';
 import MenuRouter from './components/MenuRouter';
 import PicturePage from './pages/PicturePage';
-import Join from './components/Join'
-import Create from './components/Create'
 import ChatPage from './pages/ChatPage'
 
 const App = () => {
@@ -31,23 +29,13 @@ const App = () => {
                     
         <Switch>
           <Route path="/chat">
-            <div className="game_container">
+            <div className="game__container">
               <ChatPage />
-            </div>
-          </Route>
-          <Route path="/create">
-            <div className="game_container">
-              <Create />
-            </div>
-          </Route>
-          <Route path="/join">
-            <div className="game_container">
-              <Join />
             </div>
           </Route>
           <Route path="/online">
             <div className="game__container">
-              <OnlineGame />
+              <OnlineGame page={page}/>
             </div>
           </Route>
           <Route path="/picture">

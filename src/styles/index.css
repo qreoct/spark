@@ -431,7 +431,8 @@ small,
   display: flex;
   flex-direction: column;
   background-color: #1A1A1D;
-  height: 100vh;
+  height: 90vh;
+  width: 500px;
 }
 
 .online__chatForm {

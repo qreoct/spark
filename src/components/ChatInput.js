@@ -4,6 +4,7 @@ const ChatInput = ({ text, setText, sendMessage }) => {
   return (
     <form className='online__chatForm'>
       <input 
+        autoFocus
         className='online__input'
         type='text'
         placeholder='Type a message'

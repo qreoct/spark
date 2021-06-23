@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
-import {
-  Link
-} from 'react-router-dom';
+
 import BackButton from './BackButton.js';
+import MenuHeader from './MenuHeader'
 import socket from '../socket'
+import { conditionalExpression } from '@babel/types';
 
 
-const Join = () => {
-  const [code, setCode] = useState('')
+const Join = ({setView}) => {
+  const [room, setRoom] = useState('')
 
   const handleEnterClick = (event) => {
-    if (!code) {
-      event.preventDefault()
-    }
-    socket.connect()
-    socket.emit('join', code, error => {
+    event.preventDefault()
+    socket.emit('join', room, ({error}) => {
       if (error) {
         alert(error)
+      } else {
+        console.log('does it even get here?')
+        setView('chat')
       }
     })
+    //setView('chat')
   }
 
   return (
-    <div className="joinOuterContainer">
-      <div className="joinInnerContainer">
-        <h1 className="heading">Join</h1>
-        <div><input placeholder="Room Code" className="joinInput" type="text" onChange={event => setCode(event.target.value)} /></div>
-        <Link onClick={handleEnterClick} to={'/online'}>
-          <button className="button" type="submit">Enter</button>
-        </Link>
+    <div>
+      <MenuHeader />
+
+      <div>
+        <h1>Join Room</h1>
+        <form onSubmit={handleEnterClick}>
+          <input
+            autoFocus
+            type='text'
+            placeholder='Enter your room code'
+            value={room}
+            onChange={event => setRoom(event.target.value)}
+          />
+          <button type='Submit'>Enter</button>
+        </form>
       </div>
+
       <BackButton />
     </div>
   )
