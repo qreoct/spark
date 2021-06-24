@@ -321,9 +321,7 @@ small,
   content: "";
   position: absolute;
   height: 70vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
+  width: 50vw;
   display: block;
   z-index: -1;
   border-radius: 30px;
@@ -377,7 +375,7 @@ small,
   columns: 2;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 680px) {
   /* mobile pictures must be smaller */
   .card__picture--thumb {
     border: 8px solid;

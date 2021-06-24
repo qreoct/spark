@@ -11,18 +11,20 @@ const PictureCard = ({topic, data, isActive, mode}) => {
   const [question, setQuestion] = useState('');
 
   useEffect(async () => {
-    if (mode === 'this-or-that') {
+    if (data.this) {
       let options = [data.this, data.that];
       Util.shuffle(options);
-      setQuestion(`${options[0]} or ${options[1]}?`);
-      let pic_this = await picturesService.pictureByQueryCount(data.this,3);
-      let pic_that = await picturesService.pictureByQueryCount(data.that,3);
+      if(mode === 'this-or-that'){
+        setQuestion(`${options[0]} or ${options[1]}?`);
+      }
+      let pic_this = await picturesService.pictureByQueryCount(data.this,1);
+      let pic_that = await picturesService.pictureByQueryCount(data.that,1);
       setPicture([...pic_this, ...pic_that]);
     } else {
-      setQuestion(data.question);
       let res = await picturesService.pictureByTopicCount(topic,6);
       setPicture([...res]);
     }
+    setQuestion(data.question);
   }, [])
 
   const renderPicture = () => {
