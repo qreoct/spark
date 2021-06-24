@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-import BackButton from './BackButton.js';
 import MenuHeader from './MenuHeader'
 import socket from '../socket'
-import { conditionalExpression } from '@babel/types';
+import BackButton from './BackButton'
 
 
 const Join = ({setView}) => {
@@ -15,32 +15,35 @@ const Join = ({setView}) => {
       if (error) {
         alert(error)
       } else {
-        console.log('does it even get here?')
         setView('chat')
       }
     })
-    //setView('chat')
+  }
+
+  const history = useHistory()
+
+  const handleJoinBackAction = () => {
+    socket.auth = null
+    socket.off()
+    socket.disconnect()
+    history.goBack()
   }
 
   return (
     <div>
       <MenuHeader />
-
-      <div>
-        <h1>Join Room</h1>
-        <form onSubmit={handleEnterClick}>
-          <input
-            autoFocus
-            type='text'
-            placeholder='Enter your room code'
-            value={room}
-            onChange={event => setRoom(event.target.value)}
-          />
-          <button type='Submit'>Enter</button>
-        </form>
-      </div>
-
-      <BackButton />
+      <h1>Join Room</h1>
+      <form onSubmit={handleEnterClick}>
+        <input
+          autoFocus
+          type='text'
+          placeholder='Enter your room code'
+          value={room}
+          onChange={event => setRoom(event.target.value)}
+        />
+        <button type='Submit'>Enter</button>
+      </form>
+      <BackButton action={handleJoinBackAction} />
     </div>
   )
 }

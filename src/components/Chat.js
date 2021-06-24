@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+
 import socket from '../socket.js'
-import BackButton from './BackButton'
 import ChatMessages from './ChatMessages'
 import ChatInput from './ChatInput'
+import BackButton from './BackButton.js'
 
 const Chat = () => {
   const [text, setText] = useState('')
@@ -15,13 +16,6 @@ const Chat = () => {
     })
   }, [])
 
-  const history = useHistory()
-
-  const handleBackAction = () => {
-    socket.disconnect()
-    history.goBack()
-  }
-
   //function for sending message
   const sendMessage = (event) => {
     event.preventDefault()
@@ -31,14 +25,26 @@ const Chat = () => {
     }
   }
 
+  const history = useHistory()
+
+  const handleChatBackAction = () => {
+    const result = window.confirm('You will not be able to come back, are you sure?')
+    if (result) {
+      socket.auth = null
+      socket.emit('leave')
+      socket.off()
+      socket.disconnect()
+      history.goBack()
+    }
+  }
+
   return (
     <div className='online__chatContainer'>
       <h1>Chat Room</h1>
       <ChatMessages messages={messages} />
       <ChatInput text={text} setText={setText} sendMessage={sendMessage} />
-      <BackButton action={handleBackAction}/>
-    </div>
-    
+      <BackButton action={handleChatBackAction} />
+    </div> 
   )
 }
 

@@ -22,20 +22,30 @@ const OnlineGame = ({page}) => {
       setCode(socket.userID)
     })
 
-    setCode(socket.userID)
+    return () => {
+      socket.auth = null
+      socket.off()
+      socket.disconnect()
+    }
   }, [socket])
 
   if (view === 'create') {
     return (
-      <Create code={code} setView={setView} />
+      <div>
+        <Create code={code} setView={setView} />
+      </div>
     )
   } else if (view === 'join') {
     return (
-      <Join setView={setView}/>
+      <div>
+        <Join setView={setView}/>
+      </div>
     )
   } else if (view === 'chat') {
     return (
-      <Chat />
+      <div>
+        <Chat />
+      </div>
     )
   }
   return (
@@ -44,6 +54,7 @@ const OnlineGame = ({page}) => {
       <p> Choose between (1) Random (2) Create (3) Join. </p>
 
       <p> Coming soon </p>
+      <p>You should not be here</p>
 
       <BackButton />
     </div>
