@@ -20,8 +20,8 @@ const PictureCard = ({topic, data, isActive, mode}) => {
       setPicture([...pic_this, ...pic_that]);
     } else {
       setQuestion(data.question);
-      let res = await picturesService.pictureByTopic(topic);
-      setPicture([res]);
+      let res = await picturesService.pictureByTopicCount(topic,6);
+      setPicture([...res]);
     }
   }, [])
 
@@ -39,7 +39,7 @@ const PictureCard = ({topic, data, isActive, mode}) => {
 
   return (
     <div className={`${isActive ? 'active' : 'inactive'} card__picture`}>
-      <div style={{margin:'30px'}}>
+      <div style={{margin:'20px'}}>
         <p className="card__picture--question"> {question} </p>
       </div>
 
