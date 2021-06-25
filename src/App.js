@@ -13,6 +13,8 @@ import MenuHeader from './components/MenuHeader';
 import MenuRouter from './components/MenuRouter';
 import PicturePage from './pages/PicturePage';
 import ChatPage from './pages/ChatPage'
+import JoinPage from './pages/JoinPage'
+import CreatePage from './pages/CreatePage'
 
 const App = () => {
 
@@ -26,16 +28,26 @@ const App = () => {
   return (
     <Router>
       <div className="site__container">
-                    
+                     
         <Switch>
+          <Route path="/online/:roomCode">
+            <div className="game__container">
+              <OnlineGame />
+            </div>
+          </Route>
+          <Route path='/join'>
+            <div className="game__container">
+              <JoinPage />
+            </div>
+          </Route>
+          <Route path="/create">
+            <div className="game__container">
+              <CreatePage />
+            </div>
+          </Route>
           <Route path="/chat">
             <div className="game__container">
               <ChatPage />
-            </div>
-          </Route>
-          <Route path="/online">
-            <div className="game__container">
-              <OnlineGame page={page}/>
             </div>
           </Route>
           <Route path="/picture">

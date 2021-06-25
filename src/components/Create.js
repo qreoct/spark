@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import BackButton from './BackButton.js'
-import MenuHeader from './MenuHeader.js'
 import socket from '../socket'
 
 const Create = ({code, setView }) => {
@@ -24,7 +23,6 @@ const Create = ({code, setView }) => {
 
   return (
     <div>
-      <MenuHeader />
       <h1>Create Room</h1>
       <h3>Your room code is</h3>
       <h2>{code}</h2>

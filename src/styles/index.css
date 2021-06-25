@@ -463,3 +463,24 @@ small,
   overflow: auto;
   flex: auto;
 }
+
+.online__create-page {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.online__join-page {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.online__container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
