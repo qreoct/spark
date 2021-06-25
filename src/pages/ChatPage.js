@@ -34,7 +34,7 @@ const ChatPage = () => {
     })
 
     return () => {
-      socket.auth = null
+      //socket.auth = null
       //socket.emit('leave')
       socket.off()
       socket.disconnect()

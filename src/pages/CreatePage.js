@@ -5,6 +5,8 @@ import socket from '../socket'
 import BackButton from '../components/BackButton'
 import MenuHeader from '../components/MenuHeader'
 
+const BASE_URL =  'localhost:3000' || 'https://dashboard.heroku.com/apps/sprkprod-ruiquan'
+
 const CreatePage = () => {
   const [code, setCode] = useState('loading...')
   const history = useHistory()
@@ -45,7 +47,7 @@ const CreatePage = () => {
       <h1>Create Room</h1>
       Your room code is
       <h1>{code}</h1>
-      or copy this URL <em>{`localhost:3000/online/${code}`}</em>
+      or copy this URL <em>{`${BASE_URL}/online/${code}`}</em>
       <h5>The room will start once one other player joins</h5>
       <BackButton action={handleCreateBackAction} />
     </div>

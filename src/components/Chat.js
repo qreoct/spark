@@ -15,21 +15,27 @@ const Chat = () => {
   useEffect(() => {
     //Ensures that user leave when closing tab
     window.onbeforeunload = () => {
-      socket.auth = null
       socket.emit('leave')
       socket.off()
       socket.disconnect()
     }
     socket.connect()
 
+    socket.on('session', ({ sessionID, userID }) => {
+      // attach the session ID to the next reconnection attempts
+      socket.auth = { sessionID }
+
+      socket.userID = userID
+    })
+
     socket.emit('join', (roomCode))
 
     socket.on('message', (message) => { //message = {content, from, to}
+      //window.localStorage.setItem()
       setMessages(messages => messages.concat(message)) //I have no clue why its a function too
     })
 
     return () => {
-      socket.auth = null
       //socket.emit('leave')
       socket.off()
       socket.disconnect()
