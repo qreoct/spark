@@ -19,11 +19,19 @@ const Chat = () => {
       socket.off()
       socket.disconnect()
     }
+
+    const userID = sessionStorage.getItem('userID')
+    if (userID) {
+      socket.auth = { userID }
+    }
+
     socket.connect()
 
-    socket.on('session', ({ sessionID, userID }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID }
+    socket.on('session', ({ userID, roomCode }) => {
+      // attach the user ID to the next reconnection attempts
+      socket.auth = { userID }
+
+      sessionStorage.setItem('userID', userID);
 
       socket.userID = userID
     })
@@ -31,12 +39,12 @@ const Chat = () => {
     socket.emit('join', (roomCode))
 
     socket.on('message', (message) => { //message = {content, from, to}
-      //window.localStorage.setItem()
+      sessionStorage.setItem(socket.userID, messages.concat(message))
       setMessages(messages => messages.concat(message)) //I have no clue why its a function too
     })
 
     return () => {
-      //socket.emit('leave')
+      socket.emit('leave')
       socket.off()
       socket.disconnect()
       history.push('/')

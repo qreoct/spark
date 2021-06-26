@@ -8,26 +8,23 @@ import BackButton from '../components/BackButton'
 
 const JoinPage = () => {
   const [inputCode, setInputCode] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     socket.connect()
 
-    socket.on('session', ({ sessionID, userID }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID }
-
-      socket.userID = userID
+    socket.emit('onJoin', null, ({ roomCode }) => {
+      if (roomCode) {
+        history.push(`/online/${roomCode}`)
+      }
     })
 
     return () => {
-      socket.auth = null
       socket.off()
       socket.disconnect()
     }
 
   }, [socket])
-
-  const history = useHistory()
 
   const handleEnterClick = (event) => {
     event.preventDefault()
@@ -41,7 +38,6 @@ const JoinPage = () => {
   }
 
   const handleJoinBackAction = () => {
-    socket.auth = null
     socket.off()
     socket.disconnect()
     history.goBack()

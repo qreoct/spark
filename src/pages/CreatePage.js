@@ -14,20 +14,21 @@ const CreatePage = () => {
   useEffect(() => {
     socket.connect()
 
-    socket.on('session', ({ sessionID, userID }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID }
-
-      socket.userID = userID
-      setCode(socket.userID)
+    socket.emit('create', null, ({ roomCode }) => {
+      if (roomCode) {
+        history.push(`/online/${roomCode}`)
+      }
     })
 
-    socket.on('joining', () => {
-      history.push(`/online/${socket.userID}`)
+    socket.on('create', roomCode => {
+      setCode(roomCode)
+    })
+
+    socket.on('joining', (roomCode) => {
+      history.push(`/online/${roomCode}`)
     })
 
     return () => {
-      socket.auth = null
       socket.off()
       socket.disconnect()
     }
@@ -35,7 +36,6 @@ const CreatePage = () => {
 
 
   const handleCreateBackAction = () => {
-    socket.auth = null
     socket.off()
     socket.disconnect()
     history.goBack()
