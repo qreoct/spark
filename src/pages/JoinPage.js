@@ -18,13 +18,7 @@ const JoinPage = () => {
         history.push(`/online/${roomCode}`)
       }
     })
-
-    return () => {
-      socket.off()
-      socket.disconnect()
-    }
-
-  }, [socket])
+  }, [])
 
   const handleEnterClick = (event) => {
     event.preventDefault()
@@ -37,18 +31,12 @@ const JoinPage = () => {
     })
   }
 
-  const handleJoinBackAction = () => {
-    socket.off()
-    socket.disconnect()
-    history.goBack()
-  }
-
   return (
     <div className="online__join-page">
       <MenuHeader />
       <h1>Join Room</h1>
       <Join handleEnterClick={handleEnterClick} inputCode={inputCode} handleCodeChange={(event => setInputCode(event.target.value))} />
-      <BackButton action={handleJoinBackAction} />
+      <BackButton />
     </div>
   )
 }

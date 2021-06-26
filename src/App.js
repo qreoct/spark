@@ -15,6 +15,7 @@ import PicturePage from './pages/PicturePage';
 import ChatPage from './pages/ChatPage'
 import JoinPage from './pages/JoinPage'
 import CreatePage from './pages/CreatePage'
+import WaitingPage from './pages/WaitingPage'
 
 const App = () => {
 
@@ -33,6 +34,11 @@ const App = () => {
           <Route path="/online/:roomCode">
             <div className="game__container">
               <OnlineGame />
+            </div>
+          </Route>
+          <Route path='/random'>
+            <div className='game__container'>
+              <WaitingPage />
             </div>
           </Route>
           <Route path='/join'>

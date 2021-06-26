@@ -14,11 +14,13 @@ const Chat = () => {
 
   useEffect(() => {
     //Ensures that user leave when closing tab
+    /*
     window.onbeforeunload = () => {
       socket.emit('leave')
       socket.off()
       socket.disconnect()
     }
+    */
 
     const userID = sessionStorage.getItem('userID')
     if (userID) {
@@ -44,9 +46,6 @@ const Chat = () => {
     })
 
     return () => {
-      socket.emit('leave')
-      socket.off()
-      socket.disconnect()
       history.push('/')
     }
   }, [socket])

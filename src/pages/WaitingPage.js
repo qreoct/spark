@@ -5,41 +5,44 @@ import socket from '../socket'
 import BackButton from '../components/BackButton'
 import MenuHeader from '../components/MenuHeader'
 
-const BASE_URL =  'localhost:3000' || 'https://dashboard.heroku.com/apps/sprkprod-ruiquan'
-
-const CreatePage = () => {
-  const [code, setCode] = useState('loading...')
+const WaitingPage = () => {
   const history = useHistory()
+  window.onbeforeunload = () => {
+    socket.emit('leaveWaiting')
+  }
 
   useEffect(() => {
     socket.connect()
 
-    socket.emit('create', null, ({ roomCode }) => {
+    socket.emit('waiting', null, (roomCode) => {
       if (roomCode) {
         history.push(`/online/${roomCode}`)
       }
     })
 
-    socket.once('create', roomCode => {
-      setCode(roomCode)
-    })
-
-    socket.once('joining', (roomCode) => {
+    socket.on('joining', (roomCode) => {
       history.push(`/online/${roomCode}`)
     })
+
+    return () => {
+      socket.emit('leaveWaiting')
+    }
   }, [])
+
+
+  const handleCreateBackAction = () => {
+    socket.emit('leaveWaiting')
+    history.goBack()
+  }
   
   return (
-    <div className="online__create-page">
+    <div className="online__waiting-page">
       <MenuHeader />
-      <h1>Create Room</h1>
-      Your room code is
-      <h1>{code}</h1>
-      or copy this URL <em>{`${BASE_URL}/online/${code}`}</em>
+      <h1>Waiting Room</h1>
       <h5>The room will start once one other player joins</h5>
-      <BackButton />
+      <BackButton action={handleCreateBackAction} />
     </div>
   )
 }
 
-export default CreatePage
+export default WaitingPage

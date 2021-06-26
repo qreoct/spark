@@ -478,6 +478,13 @@ small,
   align-items: center;
 }
 
+.online__waiting-page {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 .online__container {
   display: flex;
   flex-direction: column;
