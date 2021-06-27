@@ -5,7 +5,7 @@ import socket from '../socket'
 import BackButton from '../components/BackButton'
 import MenuHeader from '../components/MenuHeader'
 
-const BASE_URL =  'localhost:3000' || 'https://dashboard.heroku.com/apps/sprkprod-ruiquan'
+const BASE_URL = 'https://sprkprod-ruiquan.herokuapp.com' || 'localhost:3000'
 
 const CreatePage = () => {
   const [code, setCode] = useState('loading...')
@@ -14,11 +14,7 @@ const CreatePage = () => {
   useEffect(() => {
     socket.connect()
 
-    socket.emit('create', null, ({ roomCode }) => {
-      if (roomCode) {
-        history.push(`/online/${roomCode}`)
-      }
-    })
+    socket.emit('create')
 
     socket.once('create', roomCode => {
       setCode(roomCode)

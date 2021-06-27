@@ -9,15 +9,9 @@ import BackButton from '../components/BackButton'
 const JoinPage = () => {
   const [inputCode, setInputCode] = useState('')
   const history = useHistory()
-
+  
   useEffect(() => {
     socket.connect()
-
-    socket.emit('onJoin', null, ({ roomCode }) => {
-      if (roomCode) {
-        history.push(`/online/${roomCode}`)
-      }
-    })
   }, [])
 
   const handleEnterClick = (event) => {

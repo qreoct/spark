@@ -12,16 +12,18 @@ const Chat = ({ mode, setQuestions }) => {
   const [messages, setMessages] = useState([])
   const { roomCode } = useParams()
   const history = useHistory()
+
+  // Ensures user leave when closing tab
+  window.onbeforeunload = () => {
+    socket.emit('leave')
+  }
   
+  // Redirect user on refresh
+  window.onload = () => {
+    history.push('/')
+  }
+
   useEffect(() => {
-    //Ensures that user leave when closing tab
-    /*
-    window.onbeforeunload = () => {
-      socket.emit('leave')
-      socket.off()
-      socket.disconnect()
-    }
-    */
    
     const userID = sessionStorage.getItem('userID')
     if (userID) {
@@ -48,7 +50,7 @@ const Chat = ({ mode, setQuestions }) => {
       // attach the user ID to the next reconnection attempts
       socket.auth = { userID }
 
-      sessionStorage.setItem('userID', userID);
+      //sessionStorage.setItem('userID', userID);
 
       socket.userID = userID
     })
@@ -59,6 +61,10 @@ const Chat = ({ mode, setQuestions }) => {
     })
 
     return () => {
+      socket.auth = null
+      socket.isHost = false
+      socket.emit('leave')
+      socket.off()
       history.push('/')
     }
   }, [socket])
@@ -79,7 +85,6 @@ const Chat = ({ mode, setQuestions }) => {
       socket.isHost = false
       socket.emit('leave')
       socket.off()
-      socket.disconnect()
       history.push('/')
     }
   }
