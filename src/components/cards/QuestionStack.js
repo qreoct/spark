@@ -7,7 +7,7 @@ const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
 
   const [qnList, setQnList] = useState([]);
   const [index, setIndex] = useState(0);
-  let colors = ['yellow', 'magenta', 'cyan'];
+  let colors = ['topaz', 'amber', 'amethyst', 'jade'];
 
   useEffect(() => {
     setQnList(questions.slice(0,5));

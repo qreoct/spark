@@ -42,8 +42,6 @@ export function pictureByTopic(topic) {
 
       const data = res;
 
-      console.log('picturebytopic: ' + data);
-
       dispatch(getPictureSuccess(data));
     } catch (error) {
       dispatch(getPictureFailure());

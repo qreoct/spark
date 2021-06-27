@@ -9,8 +9,9 @@ import GroupGame from './pages/GroupGame';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
-import MenuHeader from './components/MenuHeader';
-import MenuRouter from './components/MenuRouter';
+import MenuHeader from './components/navigation/MenuHeader';
+import MenuRouter from './components/navigation/MenuRouter';
+import JourneyPage from './pages/JourneyPage';
 
 const App = () => {
 
@@ -37,15 +38,20 @@ const App = () => {
             </div>
           </Route>
           <Route path="/solo">
-            <div className="game__container">
-              <SoloGame />
-            </div>
+            <SoloGame />
           </Route>
           <Route path="/about">
             <div className="menu__content--container">
               <div className="menu__content--data">
                 <MenuHeader />
                 <About />
+              </div>
+            </div>
+          </Route>
+          <Route path="/profile/:id">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
+                <JourneyPage/>
               </div>
             </div>
           </Route>
