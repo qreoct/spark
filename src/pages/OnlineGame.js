@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/index.css'
 
 import Chat from '../components/Chat'
-import QuestionStack from '../components/QuestionStack';
-import questionService from '../services/questions'
+import socket from '../socket'
 
 const OnlineGame = ({ mode }) => {
   const [question, setQuestion] = useState('')
@@ -20,10 +19,20 @@ const OnlineGame = ({ mode }) => {
     }
   }, [questions, count])
 
+  useEffect(() => {
+    socket.on('next', () => {
+      setCount(count => count + 1)
+    })
+  }, [])
+
+  const handleClick = () => {
+    socket.emit('nextQuestion')
+  }
+
   return (
     <div className="online__container">
       {question}
-      <button onClick={() => setCount(count + 1)} >Next</button>
+      <button onClick={handleClick} >Next</button>
       <Chat mode={mode} setQuestions={setQuestions} />
     </div>
   )

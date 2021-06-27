@@ -29,7 +29,7 @@ const CreatePage = () => {
       history.push(`/online/${roomCode}`)
     })
   }, [])
-  
+
   return (
     <div className="online__create-page">
       <MenuHeader />

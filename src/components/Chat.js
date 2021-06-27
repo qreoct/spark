@@ -33,7 +33,7 @@ const Chat = ({ mode, setQuestions }) => {
     
     if (socket.isHost) {
       questionService
-        .getQuestionsFromCategory(mode, 10, 8, 2)
+        .getQuestionsFromCategory(mode, 5, 4, 1)
         .then(questions => {
           setQuestions(questions) 
           socket.emit('setQuestions', questions)
@@ -44,7 +44,7 @@ const Chat = ({ mode, setQuestions }) => {
       })
     }
 
-    socket.on('session', ({ userID, roomCode }) => {
+    socket.on('session', ({ userID }) => {
       // attach the user ID to the next reconnection attempts
       socket.auth = { userID }
 
@@ -55,7 +55,6 @@ const Chat = ({ mode, setQuestions }) => {
 
 
     socket.on('message', (message) => { //message = {content, from, to}
-      sessionStorage.setItem(socket.userID, messages.concat(message))
       setMessages(messages => messages.concat(message)) //I have no clue why its a function too
     })
 
@@ -77,6 +76,7 @@ const Chat = ({ mode, setQuestions }) => {
     const result = window.confirm('You will not be able to come back, are you sure?')
     if (result) {
       socket.auth = null
+      socket.isHost = false
       socket.emit('leave')
       socket.off()
       socket.disconnect()

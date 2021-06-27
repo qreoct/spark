@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import socket from '../socket'
@@ -7,6 +7,7 @@ import MenuHeader from '../components/MenuHeader'
 
 const WaitingPage = () => {
   const history = useHistory()
+
   window.onbeforeunload = () => {
     socket.emit('leaveWaiting')
   }
@@ -21,7 +22,7 @@ const WaitingPage = () => {
       }
     })
 
-    socket.on('joining', (roomCode) => {
+    socket.once('joining', (roomCode) => {
       history.push(`/online/${roomCode}`)
     })
 
@@ -30,8 +31,7 @@ const WaitingPage = () => {
     }
   }, [])
 
-
-  const handleCreateBackAction = () => {
+  const handleBackAction = () => {
     socket.emit('leaveWaiting')
     history.goBack()
   }
@@ -41,7 +41,7 @@ const WaitingPage = () => {
       <MenuHeader />
       <h1>Waiting Room</h1>
       <h5>The room will start once one other player joins</h5>
-      <BackButton action={handleCreateBackAction} />
+      <BackButton action={handleBackAction} />
     </div>
   )
 }
