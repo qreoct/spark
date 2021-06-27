@@ -5,13 +5,14 @@ import socket from '../socket.js'
 import ChatMessages from './ChatMessages'
 import ChatInput from './ChatInput'
 import BackButton from './BackButton.js'
+import questionService from '../services/questions'
 
-const Chat = () => {
+const Chat = ({ mode, setQuestions }) => {
   const [text, setText] = useState('')
   const [messages, setMessages] = useState([])
   const { roomCode } = useParams()
   const history = useHistory()
-
+  
   useEffect(() => {
     //Ensures that user leave when closing tab
     /*
@@ -21,13 +22,27 @@ const Chat = () => {
       socket.disconnect()
     }
     */
-
+   
     const userID = sessionStorage.getItem('userID')
     if (userID) {
       socket.auth = { userID }
     }
-
+    
     socket.connect()
+    socket.emit('join', (roomCode))
+    
+    if (socket.isHost) {
+      questionService
+        .getQuestionsFromCategory(mode, 10, 8, 2)
+        .then(questions => {
+          setQuestions(questions) 
+          socket.emit('setQuestions', questions)
+        })
+    } else {
+      socket.on('setQuestions', (questions) => {
+        setQuestions(questions)
+      })
+    }
 
     socket.on('session', ({ userID, roomCode }) => {
       // attach the user ID to the next reconnection attempts
@@ -38,7 +53,6 @@ const Chat = () => {
       socket.userID = userID
     })
 
-    socket.emit('join', (roomCode))
 
     socket.on('message', (message) => { //message = {content, from, to}
       sessionStorage.setItem(socket.userID, messages.concat(message))

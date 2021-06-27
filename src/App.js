@@ -33,7 +33,7 @@ const App = () => {
         <Switch>
           <Route path="/online/:roomCode">
             <div className="game__container">
-              <OnlineGame />
+              <OnlineGame mode={mode} />
             </div>
           </Route>
           <Route path='/random'>

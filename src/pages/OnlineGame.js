@@ -1,38 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/index.css'
 
 import Chat from '../components/Chat'
 import QuestionStack from '../components/QuestionStack';
+import questionService from '../services/questions'
 
-import { fetchQuestionsFromCategory } from '../actions/questionsActions'
-import { shuffle } from '../utils/shuffle';
-import { connect } from 'react-redux';
-
-const OnlineGame = ({dispatch, loading, questions, hasErrors, mode}) => {
-
+const OnlineGame = ({ mode }) => {
+  const [question, setQuestion] = useState('')
+  const [questions, setQuestions] = useState([])
+  const [count, setCount] = useState(0)
+  
   useEffect(() => {
-    dispatch(fetchQuestionsFromCategory('online-room'))
-  }, [dispatch])
-
-  const renderQuestion = () => {
-    if (loading) return <p> Loading... </p>
-    if (hasErrors) return <p> Error :( </p>
-
-    return <QuestionStack questions={shuffle(questions)} isFavoritible={false} />
-  }
+    if (questions.length === 0) {
+      setQuestion('loading')
+    } else if (count >= questions.length) {
+      setQuestion('no more question')
+    } else {
+      setQuestion(questions[count].question)
+    }
+  }, [questions, count])
 
   return (
     <div className="online__container">
-      {renderQuestion()}
-      <Chat />
+      {question}
+      <button onClick={() => setCount(count + 1)} >Next</button>
+      <Chat mode={mode} setQuestions={setQuestions} />
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  loading: state.questions.loading,
-  questions: state.questions.questions,
-  hasErrors: state.questions.hasErrors,
-});
-
-export default connect(mapStateToProps)(OnlineGame)
+export default OnlineGame

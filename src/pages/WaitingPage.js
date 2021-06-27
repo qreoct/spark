@@ -16,6 +16,7 @@ const WaitingPage = () => {
 
     socket.emit('waiting', null, (roomCode) => {
       if (roomCode) {
+        socket.isHost = true
         history.push(`/online/${roomCode}`)
       }
     })
