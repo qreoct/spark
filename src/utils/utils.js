@@ -14,9 +14,6 @@ const shuffle = (a) => {
 
 const writeToFavs = (e) => {
   var old = readFavsFromStorage();
-  console.log('readed: ' + old);
-  console.log(typeof(old))
-  console.log(typeof(old[0]))
   old.push(e);
   localStorage.setItem('favs', JSON.stringify(old));
 }
@@ -34,7 +31,6 @@ const toggleFromFavs = (e) => {
 
 const isInFavs = (e) => {
   var old = readFavsFromStorage();
-  console.log(old.findIndex(o => o.id === e.id));
   return (old.findIndex(o => o.id === e.id) != -1);
 }
 

@@ -17,7 +17,6 @@ const MenuRouter = ({setPage, setMode}) => {
           <Link to="/game" onClick={() => {setPage('game'); setMode('icebreakers')}}> <LinkButton key="Icebreakers" title="Icebreakers" subtitle="Get to know anyone!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('deep')}}> <LinkButton key="Deep" title="Deep Questions" subtitle="Go deep!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('this-or-that')}}> <LinkButton key="ThisOrThat" title="This or That" subtitle="Which will you choose?"/> </Link>
-          <Link to="/picture" onClick={() => setPage('picture')}> <LinkButton key="Picture" title="Picture" subtitle="Testing Picture API"/> </Link>
         </div>
         <div className="menu__navigation--container">
           <BackButton action={() => setMenu('player')}/>

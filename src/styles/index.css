@@ -259,6 +259,7 @@ small,
   justify-content: center;
   align-items: center;
   background-color: var(--black);
+  z-index: 1000; /* hacky fix to be above cards */
 }
 
 .profile__navbar {
@@ -308,40 +309,52 @@ small,
   filter: opacity(0.5) brightness(1.4);
 }
 
+.active {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.active:after {
+  background-image: linear-gradient(180deg, var(--black) 30%, #14141400 50%);
+  opacity: 1;
+  transition: all 0.5s;
+  content: "";
+  position: absolute;
+  height: 70vh;
+  width: 50vw;
+  display: block;
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.inactive {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
 /*                        picture card */
+
+.card__picture {
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  position: relative;
+}
 
 .card__picture--thumb {
   border: 15px solid;
-  border-width: 15px;
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
-  max-height: 40vh;
-  max-width: 80vw;
+  max-width: 25vw;
+  max-height: 30vh;
 }
 
-.card__picture:hover {
-  background-color: transparent;
-  z-index: 50;
-}
-
-.card__picture span {
-  position: absolute;
-  padding: 10px;
-  left: -1000px;
-  visibility: hidden;
-}
-
-.card__picture span img {
-  padding: 2px;
-  min-height: 40vh;
-  max-height: 70vh;
-  max-width: 60vw;
-}
-
-.card__picture:hover span {
-  visibility: visible;
-  top: 0;
-  left: 125px;
+.card__picture--solo {
+  max-height: 60vh !important;
+  max-width: 80vw !important;
 }
 
 .card__picture--question {
@@ -349,8 +362,42 @@ small,
   display: inline;
   padding: 5px;
   color: var(--grey);
-  font-size: 1.6em;
+  font-size: calc(0.8em + 1vh);
   font-weight: 700;
+}
+
+.card__picture--gallery {
+  display: flex;
+  width: 80vw;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  columns: 2;
+}
+
+@media (max-width: 680px) {
+  /* mobile pictures must be smaller */
+  .card__picture--thumb {
+    border: 8px solid;
+    border-image-slice: 1;
+    border-image-source: var(--gradient-amethyst);
+    max-width: 40vw;
+    max-height: 22vh;
+  }
+
+  /* gallery also has to take up larger space */
+  .card__picture--gallery {
+    width: 100vw;
+    flex-direction: column;
+    max-height: 70vh;
+  }
+
+  /* active card also gets a bit more coverage */
+  .active:after {
+    background-image: linear-gradient(180deg, var(--black) 50%, #14141400 90%);
+    width: 100vw;
+    left: 0;
+  }
 }
 
 /*                      question card */
@@ -444,5 +491,9 @@ small,
 }
 
 .container {
-  height: 60vh !important;
+  height: 85vh !important;
+}
+
+.container .cards_container .card_container {
+  width: 100vw !important;
 }

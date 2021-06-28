@@ -25,7 +25,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     if (loading) return <p> Loading... </p>;
     if (hasErrors) return <p> Error :( </p>;
     
-    return <QuestionStack questions={Util.shuffle(questions)}
+    return <QuestionStack questions={Util.shuffle(questions)} mode={mode}
       isFavoritible={true} displayToast={displayToast}/>
   };
 

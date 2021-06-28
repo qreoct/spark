@@ -7,4 +7,26 @@ const getPictureFromUnsplash = async () => {
   return res.data;
 };
 
-export default { getPictureFromUnsplash }
+const pictureByTopic = async (topic) => {
+  const res = await axios.get(`${baseUrl}/topic/${topic}`)
+
+  return res.data;
+}
+
+const pictureByTopicCount = async (topic, count) => {
+  const res = await axios.get(`${baseUrl}/topic/${topic}/${count}`)
+
+  return res.data;
+}
+
+const pictureByQueryCount = async (query, count) => {
+  const res = await axios.get(`${baseUrl}/query/${query}/${count}`)
+
+  return res.data;
+}
+
+export default { 
+  getPictureFromUnsplash,
+  pictureByTopic, pictureByTopicCount,
+  pictureByQueryCount 
+}
