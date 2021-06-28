@@ -133,13 +133,6 @@ small,
   max-height: 67px;
 }
 
-/* 
-.debug {
-  position: fixed;
-  left: 0;
-  top: 0;
-} */
-
 .text__link,
 .text__link:visited {
   color: white;
@@ -166,6 +159,15 @@ small,
   padding: 0px 20px;
   margin: 10px 10px;
   border: none;
+  width: 20%;
+}
+
+.end {
+  align-self: flex-end;
+}
+
+.center {
+  align-self: center;
 }
 
 .selectable {
@@ -338,15 +340,6 @@ small,
   flex-direction: column;
   font-weight: 800;
   text-transform: uppercase;
-}
-
-.picc {
-  max-width: 20vw !important;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  width: 55%;
 }
 
 .profile__journey-entry--preview-pic {

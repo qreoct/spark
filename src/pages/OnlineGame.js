@@ -43,7 +43,7 @@ const OnlineGame = ({ mode }) => {
             {questions.length > 0 && questions[index].canPicture 
               ? <PictureCard topic={questions[index].topic} data={questions[index]} isActive={true} mode={'online'}/>
               : <span className="card__picture--question"> {question} </span>}
-            <button className="selectable input--button" onClick={handleClick}> Next </button>
+            <button className="selectable input--button center" onClick={handleClick}> Next </button>
           </>
         }
       </div>

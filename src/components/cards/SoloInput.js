@@ -53,7 +53,7 @@ const SoloInput = ({data, displayToast, submitHandler}) => {
           spellCheck="false"
           className="textarea--solid"/>
         <button onClick={handleSubmit} onTouchEnd={handleSubmit}
-          className={`input--button selectable --${col}`}> Save </button>
+          className={`input--button selectable end --${col}`}> Save </button>
       </div>
     )
 

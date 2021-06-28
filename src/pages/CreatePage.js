@@ -6,7 +6,7 @@ import { toastful, Toastful } from 'react-toastful'
 import BackButton from '../components/navigation/BackButton'
 import MenuHeader from '../components/navigation/MenuHeader'
 
-const BASE_URL = 'https://sprkprod-ruiquan.herokuapp.com' && 'localhost:3000'
+const BASE_URL = 'https://sparkorbital.herokuapp.com'
 
 const CreatePage = () => {
   const [code, setCode] = useState('loading...')
