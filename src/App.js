@@ -11,6 +11,9 @@ import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
 import MenuHeader from './components/navigation/MenuHeader';
 import MenuRouter from './components/navigation/MenuRouter';
+import JoinPage from './pages/JoinPage'
+import CreatePage from './pages/CreatePage'
+import WaitingPage from './pages/WaitingPage'
 import JourneyPage from './pages/JourneyPage';
 
 const App = () => {
@@ -25,11 +28,26 @@ const App = () => {
   return (
     <Router>
       <div className="site__container">
-                    
+                     
         <Switch>
-          <Route path="/online">
+          <Route path="/online/:roomCode">
             <div className="game__container">
-              <OnlineGame />
+              <OnlineGame mode={mode} />
+            </div>
+          </Route>
+          <Route path='/random'>
+            <div className='game__container'>
+              <WaitingPage />
+            </div>
+          </Route>
+          <Route path='/join'>
+            <div className="game__container">
+              <JoinPage />
+            </div>
+          </Route>
+          <Route path="/create">
+            <div className="game__container">
+              <CreatePage />
             </div>
           </Route>
           <Route path="/game">

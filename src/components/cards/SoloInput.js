@@ -51,9 +51,9 @@ const SoloInput = ({data, displayToast, submitHandler}) => {
         <h1 className="solo__input--title">Reflection</h1>
         <textarea value={reflection} onChange={handleReflection}
           spellCheck="false"
-          className="solo__input--text"/>
+          className="textarea--solid"/>
         <button onClick={handleSubmit} onTouchEnd={handleSubmit}
-          className={`input--button --${col}`}> Save </button>
+          className={`input--button selectable end --${col}`}> Save </button>
       </div>
     )
 
