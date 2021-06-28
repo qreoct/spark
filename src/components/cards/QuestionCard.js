@@ -4,14 +4,14 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStar_solid} from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Util from '../utils/utils'
+import Util from '../../utils/utils'
 
-const QuestionCard = ({data, isFavoritible=true, color='cyan', displayToast, mode}) => {
+const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => {
 
   const [isFav, setIsFav] = useState(false);
   const [favIcon, setFavIcon] = useState(faStar);
   const [col, setColor] = useState(null);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState('Loading question...');
 
   useEffect(() => {
     if (col == null) {
@@ -67,11 +67,11 @@ const QuestionCard = ({data, isFavoritible=true, color='cyan', displayToast, mod
       return null;
     } else {
       return (
-        <div className={`game__question-card game__question-card--${col}`}>
-          <p className="game__question-card--title"> {question} </p>
+        <div className={`game__question-card --${col}`}>
+          <p className="game__question-card--title disable--select"> {question} </p>
 
           {isFavoritible 
-            ? <div className="game__question-card--icons-container"> 
+            ? <div className="game__question-card--icons-container disable--select"> 
               <FontAwesomeIcon icon={favIcon} className="game__question-card--icon" size='3x'
                 onClick={handleFav} 
                 onTouchEnd={handleFav}

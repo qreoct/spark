@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import QuestionStack from '../components/QuestionStack';
-import NavBar from '../components/NavBar';
+import QuestionStack from '../components/cards/QuestionStack';
+import NavBar from '../components/navigation/NavBar';
 
 import {fetchQuestionsFromCategory} from '../actions/questionsActions';
 import Util from '../utils/utils';

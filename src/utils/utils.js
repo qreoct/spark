@@ -12,6 +12,32 @@ const shuffle = (a) => {
   return a;
 }
 
+const timestampToMM = (timestamp) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
+    'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec']
+  return months[new Date(timestamp).getMonth()-1];
+}
+
+const timestampToString = (timestamp) => {
+
+  function padZero(i) {
+    if (i < 10) { 
+      i = '0' + i;
+    }
+    return i;
+  }
+
+  const dd = new Date(timestamp);
+  const d = dd.getDate();
+  const months = ['January', 'February', 'March', 'April', 'May',
+    'June', 'July', 'August','September','October','November','December']
+  const m = months[dd.getMonth()-1];
+  const y = dd.getFullYear();
+  const t = `${padZero(dd.getHours())}:${padZero(dd.getMinutes())}`;
+
+  return (`${d} ${m} ${y}, ${t}`);
+}
+
 const writeToFavs = (e) => {
   var old = readFavsFromStorage();
   old.push(e);
@@ -40,4 +66,45 @@ const readFavsFromStorage = () => {
   return JSON.parse(localStorage.getItem('favs')) || [];
 }
 
-export default { shuffle, writeToFavs, toggleFromFavs, isInFavs, readFavsFromStorage }
+const checkSoloReady = () => {
+  // read last posted date in solo timestamp
+  // if timestamp doesn't exist, guaranteed to be ready.
+  // is current day is a different date?
+  // if so, return true
+  // otherwise, return false
+  if (!JSON.parse(localStorage.getItem('solo'))) {
+    return true;
+  } else {
+    const stamp = new Date(JSON.parse(localStorage.getItem('solo')));
+    const now = new Date(Date.now());
+    if (stamp.getDate() !== now.getDate() &&
+        stamp.getfullMonth() !== now.getfullMonth() &&
+        stamp.getfullYear() !== now.getfullYear()) {
+      return true;
+    }
+    return false;
+  }
+}
+
+const setSoloTimestamp = () => {
+  let now = Date.now();
+  localStorage.setItem('solo', JSON.stringify(now));
+}
+
+const writeSoloReflection = (content) => {
+  let now = Date.now();
+  let save = {
+    question: content.question,
+    reflection: content.reflection,
+    picture: content.picture || false,
+    timestamp: now
+  }
+  let current = JSON.parse(localStorage.getItem('reflection')) || [];
+  localStorage.setItem('reflection', JSON.stringify([...current, save]));
+}
+
+export default {
+  shuffle, timestampToMM, timestampToString,
+  writeToFavs, toggleFromFavs, isInFavs, readFavsFromStorage,
+  checkSoloReady, setSoloTimestamp, writeSoloReflection
+}

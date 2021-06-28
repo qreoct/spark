@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/index.css';
 
-import BackButton from '../components/BackButton';
+import BackButton from '../components/navigation/BackButton';
 
 const OnlineGame = () => {
 
