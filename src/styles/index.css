@@ -710,7 +710,8 @@ small,
   flex-direction: column;
   background-color: #1a1a1d;
   height: 70%;
-  width: 500px;
+  max-width: 460px;
+  width: 100%;
 }
 
 .online__input {
@@ -745,6 +746,7 @@ small,
   justify-content: center;
   align-items: center;
   padding: 30px 0;
+  max-width: 460px;
 }
 
 .msg__bubble {
