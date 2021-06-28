@@ -72,7 +72,8 @@ const Chat = ({ mode, setQuestions }) => {
     event.preventDefault()
 
     if (text) {
-      socket.emit('private message', {content: text}, () => setText(''))
+      socket.emit('private message', {content: text})
+      setText('')
     }
   }
 
