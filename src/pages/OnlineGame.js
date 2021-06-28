@@ -3,25 +3,26 @@ import '../styles/index.css'
 
 import Chat from '../components/chat/Chat'
 import socket from '../socket'
+import PictureCard from '../components/cards/PictureCard'
 
 const OnlineGame = ({ mode }) => {
   const [question, setQuestion] = useState('')
   const [questions, setQuestions] = useState([])
-  const [count, setCount] = useState(0)
+  const [index, setIndex] = useState(0)
   
   useEffect(() => {
     if (questions.length === 0) {
-      setQuestion('loading')
-    } else if (count >= questions.length) {
-      setQuestion('no more question')
+      setQuestion('loading...')
+    } else if (index >= questions.length) {
+      setQuestion('You\'ve reached the end of the questions!')
     } else {
-      setQuestion(questions[count].question)
+      setQuestion(questions[index].question)
     }
-  }, [questions, count])
+  }, [questions, index])
 
   useEffect(() => {
     socket.on('next', () => {
-      setCount(count => count + 1)
+      setIndex(index => index + 1)
     })
   }, [])
 
@@ -29,10 +30,29 @@ const OnlineGame = ({ mode }) => {
     socket.emit('nextQuestion')
   }
 
+  const renderQuestion = () => {
+    return (
+      <div className="online__question" key={question}>
+        {index == questions.length 
+          ?
+          <>
+            <span className="card__picture--question"> {question} </span>
+          </>
+          :
+          <>       
+            {questions.length > 0 && questions[index].canPicture 
+              ? <PictureCard topic={questions[index].topic} data={questions[index]} isActive={true} mode={'online'}/>
+              : <span className="card__picture--question"> {question} </span>}
+            <button className="selectable input--button" onClick={handleClick}> Next </button>
+          </>
+        }
+      </div>
+    )
+  }
+
   return (
     <div className="online__container">
-      {question}
-      <button onClick={handleClick} >Next</button>
+      {renderQuestion()}
       <Chat mode={mode} setQuestions={setQuestions} />
     </div>
   )

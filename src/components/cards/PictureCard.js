@@ -24,9 +24,13 @@ const PictureCard = ({topic, data, isActive, mode, isSelectable=false, handleSel
     } else if (data.pic) {
       // contains picture already
       setPicture([data.pic]); 
+    } else if (mode === 'online') {
+      // fetch a picture otherwise
+      let res = await picturesService.pictureByTopicCount(topic,2);
+      setPicture([...res]);
     } else {
       // fetch a picture otherwise
-      let res = await picturesService.pictureByTopicCount(topic,6);
+      let res = await picturesService.pictureByTopicCount(topic,5);
       setPicture([...res]);
     }
     setQuestion(data.question);

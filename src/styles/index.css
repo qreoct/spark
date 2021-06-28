@@ -158,7 +158,6 @@ small,
 }
 
 .input--button {
-  align-self: flex-end;
   color: var(--black);
   font-weight: 700;
   font-size: 1.2em;
@@ -202,8 +201,15 @@ small,
   background: linear-gradient(25deg, #292929, #3d3d3d);
   padding: 20px 10px;
   font-size: 1em;
+  width: 70%;
   border: none;
   resize: none;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected {
@@ -693,11 +699,24 @@ small,
 }
 
 /*                           online */
-.online__chat-container {
+
+.online__container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.join__container {
+  margin: 10% 0;
+}
+
+.online__chat-container {
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
   background-color: #1a1a1d;
-  height: 70vh;
+  height: 70%;
   width: 500px;
 }
 
@@ -726,35 +745,56 @@ small,
   width: 100%;
 }
 
-.online__container {
+.online__question {
   display: flex;
+  height: auto;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
+  padding: 30px 0;
 }
 
-.chat__message {
-  padding: 10px 15px;
-  margin: 5px 10px;
-  color: var(--white);
-  display: block;
+.msg__bubble {
+  background: #f3f3f3;
+  padding: 0px 15px;
+  color: white;
+  display: inline-block;
+  max-width: 80%;
 }
 
-.chat__message--receive {
-  width: fit-content;
-  border-radius: 10px 10px 10px 0;
-  margin-left: 0;
-  background: linear-gradient(25deg, #292929, #4d4d4d);
-}
-
-.chat__message--send {
-  text-align: right;
-  margin-right: 0;
+.msg__bubble--send {
   border-radius: 10px 10px 0 10px;
   background: linear-gradient(25deg, #242424, #3d3d3d);
 }
 
-.chat__message--announce {
-  text-align: center;
+.msg__bubble--receive {
+  border-radius: 10px 10px 10px 0;
+  background: linear-gradient(25deg, #292929, #4d4d4d);
+}
+
+.msg__text {
+  width: 100%;
+  word-wrap: break-word;
+  color: var(--white);
+  white-space: pre-line;
+}
+
+.msg--announce {
   color: var(--yellow);
+  text-align: center;
+}
+
+.msg {
+  display: flex;
+  justify-content: center;
+  padding: 0 5%;
+  margin-top: 3px;
+}
+
+.msg--send {
+  justify-content: flex-end;
+}
+
+.msg--receive {
+  justify-content: flex-start;
 }

@@ -28,12 +28,14 @@ const JoinPage = () => {
   return (
     <div className="online__container">
       <MenuHeader />
-      <h1>Join Room</h1>
-      <ChatInput
-        text={inputCode}
-        setText={setInputCode}
-        sendMessage={handleEnterClick}
-        prompt='Enter room code'/>
+      <div className="join__container">
+        <h1>Join Room</h1>
+        <ChatInput
+          text={inputCode}
+          setText={setInputCode}
+          sendMessage={handleEnterClick}
+          prompt='Enter room code'/>
+      </div>
       <BackButton />
     </div>
   )
