@@ -27,7 +27,7 @@ const CreatePage = () => {
     })
   }, [])
 
-  const copyCode = (e) => {
+  const copyCode = () => {
     navigator.clipboard.writeText(`${BASE_URL}/online/${code}`).then(() => {
       toastful('Copied URL!',
         {duration: 1500, position: 'top'})
