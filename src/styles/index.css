@@ -352,10 +352,6 @@ small,
   white-space: pre-line;
 }
 
-.journeystack a {
-  font-weight: bold;
-}
-
 .profile__journey-entry--pic-container {
   display: flex;
   justify-content: center;
@@ -487,7 +483,7 @@ small,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 2vh;
   margin-bottom: 0vh;
 }
 
@@ -570,7 +566,7 @@ small,
     border: 8px solid;
     border-image-slice: 1;
     border-image-source: var(--gradient-amethyst);
-    max-width: 40vw;
+    max-width: 34vw;
     max-height: 22vh;
   }
 

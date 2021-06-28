@@ -16,12 +16,16 @@ const SoloInput = ({data, displayToast, submitHandler}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitHandler({
-      reflection: reflection,
-      picture: picData || null
-    });
-    setReflection('');
-    displayToast('Response Submitted!');
+    if (reflection == '') {
+      displayToast('Please write out a reflection!');
+    } else {
+      submitHandler({
+        reflection: reflection,
+        picture: picData || null
+      });
+      setReflection('');
+      displayToast('Response Submitted!');
+    }
   }
 
   const selectPicture = (pic) => {

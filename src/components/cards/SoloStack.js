@@ -18,7 +18,7 @@ const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast}) => {
   const submitHandler = (content) => {
     // write to reflections
     Util.writeSoloReflection({
-      question: questions[0].question,
+      question: questions[index].question,
       reflection: content.reflection,
       picture: content.picture || null
     });
