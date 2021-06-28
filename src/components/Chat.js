@@ -17,17 +17,14 @@ const Chat = ({ mode, setQuestions }) => {
   window.onbeforeunload = () => {
     socket.emit('leave')
   }
-  
-  // Redirect user on refresh
-  window.onload = () => {
-    history.push('/')
-  }
 
   useEffect(() => {
    
+    // Redirect user when refreshing
     const userID = sessionStorage.getItem('userID')
     if (userID) {
-      socket.auth = { userID }
+      sessionStorage.removeItem('userID')
+      history.push('/')
     }
     
     socket.connect()
@@ -50,7 +47,7 @@ const Chat = ({ mode, setQuestions }) => {
       // attach the user ID to the next reconnection attempts
       socket.auth = { userID }
 
-      //sessionStorage.setItem('userID', userID);
+      sessionStorage.setItem('userID', userID);
 
       socket.userID = userID
     })
@@ -61,6 +58,7 @@ const Chat = ({ mode, setQuestions }) => {
     })
 
     return () => {
+      sessionStorage.removeItem('userID')
       socket.auth = null
       socket.isHost = false
       socket.emit('leave')
@@ -81,10 +79,6 @@ const Chat = ({ mode, setQuestions }) => {
   const handleChatBackAction = () => {
     const result = window.confirm('You will not be able to come back, are you sure?')
     if (result) {
-      socket.auth = null
-      socket.isHost = false
-      socket.emit('leave')
-      socket.off()
       history.push('/')
     }
   }
