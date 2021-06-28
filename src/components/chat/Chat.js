@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
-import socket from '../socket.js'
+import socket from '../../socket.js'
 import ChatMessages from './ChatMessages'
 import ChatInput from './ChatInput'
-import BackButton from './BackButton.js'
-import questionService from '../services/questions'
+import BackButton from '../navigation/BackButton'
+import questionService from '../../services/questions'
 
 const Chat = ({ mode, setQuestions }) => {
   const [text, setText] = useState('')
+  const [user, setUser] = useState('')
   const [messages, setMessages] = useState([])
   const { roomCode } = useParams()
   const history = useHistory()
@@ -46,10 +47,9 @@ const Chat = ({ mode, setQuestions }) => {
     socket.on('session', ({ userID }) => {
       // attach the user ID to the next reconnection attempts
       socket.auth = { userID }
-
       sessionStorage.setItem('userID', userID);
-
       socket.userID = userID
+      setUser(userID)
     })
 
 
@@ -84,10 +84,14 @@ const Chat = ({ mode, setQuestions }) => {
   }
 
   return (
-    <div className='online__chatContainer'>
-      <h1>Chat Room</h1>
-      <ChatMessages messages={messages} />
-      <ChatInput text={text} setText={setText} sendMessage={sendMessage} />
+    <div className='online__chat-container'>
+      <ChatMessages 
+        user={user} 
+        messages={messages} />
+      <ChatInput 
+        text={text}
+        setText={setText}
+        sendMessage={sendMessage} />
       <BackButton action={handleChatBackAction} />
     </div> 
   )

@@ -1,10 +1,10 @@
 import React, { useState, useEffect }  from 'react'
 import { useHistory } from 'react-router-dom'
 
-import Join from '../components/Join'
 import socket from '../socket'
-import MenuHeader from '../components/MenuHeader'
-import BackButton from '../components/BackButton'
+import MenuHeader from '../components/navigation/MenuHeader'
+import BackButton from '../components/navigation/BackButton'
+import ChatInput from '../components/chat/ChatInput'
 
 const JoinPage = () => {
   const [inputCode, setInputCode] = useState('')
@@ -26,10 +26,14 @@ const JoinPage = () => {
   }
 
   return (
-    <div className="online__join-page">
+    <div className="online__container">
       <MenuHeader />
       <h1>Join Room</h1>
-      <Join handleEnterClick={handleEnterClick} inputCode={inputCode} handleCodeChange={(event => setInputCode(event.target.value))} />
+      <ChatInput
+        text={inputCode}
+        setText={setInputCode}
+        sendMessage={handleEnterClick}
+        prompt='Enter room code'/>
       <BackButton />
     </div>
   )

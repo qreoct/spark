@@ -17,7 +17,6 @@ const MenuRouter = ({setPage, setMode}) => {
           <Link to="/create" onClick={() => {setPage('create'); setMode('online-room')}}><LinkButton key='Create' title="Create" subtitle="Click here to get your own unique room code" /></Link>
           <Link to='/join' onClick={() => {setPage('join'); setMode('online-room')}}><LinkButton key='Join' title='Join' subtitle='Click here to join an existing room' /></Link>
           <Link to='/random' onClick={() => {setPage('random'); setMode('online-stranger')}}><LinkButton key='Random' title='Random' subtitle='Click here to join a random room' /></Link>
-          <Link to='/chat' onClick={() => {setPage('chat')}}><LinkButton key='Chat' title='Chat' subtitle='This is for testing the chat app' /></Link>
         </div>
         <div className="menu__navigation--container">
           <BackButton action={() => setMenu('player')}/>
@@ -31,7 +30,6 @@ const MenuRouter = ({setPage, setMode}) => {
           <Link to="/game" onClick={() => {setPage('game'); setMode('icebreakers')}}> <LinkButton key="Icebreakers" title="Icebreakers" subtitle="Get to know anyone!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('deep')}}> <LinkButton key="Deep" title="Deep Questions" subtitle="Go deep!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('this-or-that')}}> <LinkButton key="ThisOrThat" title="This or That" subtitle="Which will you choose?"/> </Link>
-          <Link to="/picture" onClick={() => setPage('picture')}> <LinkButton key="Picture" title="Picture" subtitle="Testing Picture API"/> </Link>
         </div>
         <div className="menu__navigation--container">
           <BackButton action={() => setMenu('player')}/>

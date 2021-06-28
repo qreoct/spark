@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import socket from '../socket'
-import BackButton from '../components/BackButton'
-import MenuHeader from '../components/MenuHeader'
+import BackButton from '../components/navigation/BackButton'
+import MenuHeader from '../components/navigation/MenuHeader'
 
 const WaitingPage = () => {
   const history = useHistory()
@@ -37,9 +37,9 @@ const WaitingPage = () => {
   }
   
   return (
-    <div className="online__waiting-page">
+    <div className="online__container">
       <MenuHeader />
-      <h1>Waiting Room</h1>
+      <h1>Waiting for players...</h1>
       <h5>The room will start once one other player joins</h5>
       <BackButton action={handleBackAction} />
     </div>

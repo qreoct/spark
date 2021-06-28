@@ -9,13 +9,12 @@ import GroupGame from './pages/GroupGame';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
-import MenuHeader from './components/MenuHeader';
-import MenuRouter from './components/MenuRouter';
-import PicturePage from './pages/PicturePage';
-import ChatPage from './pages/ChatPage'
+import MenuHeader from './components/navigation/MenuHeader';
+import MenuRouter from './components/navigation/MenuRouter';
 import JoinPage from './pages/JoinPage'
 import CreatePage from './pages/CreatePage'
 import WaitingPage from './pages/WaitingPage'
+import JourneyPage from './pages/JourneyPage';
 
 const App = () => {
 
@@ -51,25 +50,13 @@ const App = () => {
               <CreatePage />
             </div>
           </Route>
-          <Route path="/chat">
-            <div className="game__container">
-              <ChatPage />
-            </div>
-          </Route>
-          <Route path="/picture">
-            <div className="game__container">
-              <PicturePage />
-            </div>
-          </Route>
           <Route path="/game">
             <div className="game__container">
               <GroupGame mode={mode}/>
             </div>
           </Route>
           <Route path="/solo">
-            <div className="game__container">
-              <SoloGame />
-            </div>
+            <SoloGame />
           </Route>
           <Route path="/about">
             <div className="menu__content--container">
@@ -79,10 +66,17 @@ const App = () => {
               </div>
             </div>
           </Route>
+          <Route path="/profile/:id">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
+                <JourneyPage/>
+              </div>
+            </div>
+          </Route>
           <Route path="/profile">
             <div className="menu__content--container">
               <div className="menu__content--data">
-                <Profile mode={mode}/>
+                <Profile mode={mode} setPage={navigate} setMode={setMode}/>
               </div>
             </div>
           </Route>

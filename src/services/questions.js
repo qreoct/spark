@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { shuffle } from '../utils/shuffle'
+import Util from '../utils/utils'
+
 const baseUrl = '/api/questions'
 
 const getAllQuestions = async () => {
@@ -23,19 +24,32 @@ const getQuestionsFromCategory = async (category, ...args) => {
   let result = []
   const [numOfOne, numOfTwo, numOfThree] = [...args]
   if (numOfOne) {
-    const levelOne = shuffle(resOne.data).slice(0, numOfOne)
+    const levelOne = Util.shuffle(resOne.data).slice(0, numOfOne)
     result = [...result, ...levelOne]
   }
   if (numOfTwo) {
-    const levelTwo = shuffle(resTwo.data).slice(0, numOfTwo)
+    const levelTwo = Util.shuffle(resTwo.data).slice(0, numOfTwo)
     result = [...result, ...levelTwo]
   }
   if (numOfThree) {
-    const levelThree = shuffle(resThree.data).slice(0, numOfThree)
+    const levelThree = Util.shuffle(resThree.data).slice(0, numOfThree)
     result = [...result, ...levelThree]
   }
   return result
 }
 
+const getSoloQuestions = async () => {
+  let lv_small = await axios.get(baseUrl + '/solo/1')
+  const coin = [2,2,2,2,3][Math.floor(Math.random()*5)] // rng for 80% lv2, 20% lv3
+  let lv_big = await axios.get(baseUrl + '/solo/' + coin);
 
-export default { getAllQuestions, getAllQuestionsFromCategory, getQuestionsFromCategory }
+  // pick two from small
+  lv_small = Util.shuffle(lv_small.data).slice(0,2);
+
+  // pick one from big
+  lv_big = lv_big.data[Math.floor(Math.random() * lv_big.data.length)];
+  
+  return [...lv_small, lv_big];
+}
+
+export default { getAllQuestions, getAllQuestionsFromCategory, getQuestionsFromCategory, getSoloQuestions }

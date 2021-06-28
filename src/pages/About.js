@@ -1,5 +1,5 @@
 import React from 'react';
-import BackButton from '../components/BackButton.js';
+import BackButton from '../components/navigation/BackButton.js';
 import '../styles/index.css';
 
 const About = () => {

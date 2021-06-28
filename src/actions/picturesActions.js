@@ -32,3 +32,19 @@ export function fetchPicture() {
     }
   };
 }
+
+export function pictureByTopic(topic) {
+  return async (dispatch) => {
+    dispatch(getPicture());
+
+    try {
+      const res = await picturesService.pictureByTopic(topic);
+
+      const data = res;
+
+      dispatch(getPictureSuccess(data));
+    } catch (error) {
+      dispatch(getPictureFailure());
+    }
+  };
+}

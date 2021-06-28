@@ -1,3 +1,5 @@
+import Util from '../utils/utils';
+
 import questionsService from '../services/questions';
 
 export const GET_QUESTION = 'GET_QUESTION';
@@ -39,8 +41,13 @@ export function fetchQuestionsFromCategory(category) {
     dispatch(getQuestion());
 
     try {
-      const res = await questionsService.getAllQuestionsFromCategory(category);
-
+      let res;
+      if (category === 'favourites') {
+        res = await Util.readFavsFromStorage();
+      } else {
+        res = await questionsService.getAllQuestionsFromCategory(category);
+      }
+      
       const data = res;
 
       dispatch(getQuestionSuccess(data));
