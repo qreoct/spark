@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import QuestionStack from '../components/QuestionStack';
-import NavBar from '../components/NavBar';
+import QuestionStack from '../components/cards/QuestionStack';
+import NavBar from '../components/navigation/NavBar';
 
 import {fetchQuestionsFromCategory} from '../actions/questionsActions';
 import Util from '../utils/utils';
@@ -22,10 +22,10 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
   }, [dispatch]);
 
   const renderQuestion = () => {
-    if (loading) return <p> Loading... </p>;
-    if (hasErrors) return <p> Error :( </p>;
+    if (loading) return <div className="flex-center"> <p> Loading game... </p> </div>;
+    if (hasErrors) return <div className="flex-center"> <p> An error occured. Please try again. </p> </div>;
     
-    return <QuestionStack questions={Util.shuffle(questions)}
+    return <QuestionStack questions={Util.shuffle(questions)} mode={mode}
       isFavoritible={true} displayToast={displayToast}/>
   };
 

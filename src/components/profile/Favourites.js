@@ -9,7 +9,7 @@ const Favourites = ({favs, setPage, setMode}) => {
       return(
         
         <Link to="/game" onClick={() => {setPage('game'); setMode('favourites')}}>
-          <div className="profile__container profile__container--active">
+          <div className="profile__container selectable">
             <h1> Favourites </h1>
           You have {favs.length} favourited cards.
           </div>

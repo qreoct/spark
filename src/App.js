@@ -9,9 +9,12 @@ import GroupGame from './pages/GroupGame';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import OnlineGame from './pages/OnlineGame';
-import MenuHeader from './components/MenuHeader';
-import MenuRouter from './components/MenuRouter';
-import PicturePage from './pages/PicturePage';
+import MenuHeader from './components/navigation/MenuHeader';
+import MenuRouter from './components/navigation/MenuRouter';
+import JoinPage from './pages/JoinPage'
+import CreatePage from './pages/CreatePage'
+import WaitingPage from './pages/WaitingPage'
+import JourneyPage from './pages/JourneyPage';
 
 const App = () => {
 
@@ -25,16 +28,26 @@ const App = () => {
   return (
     <Router>
       <div className="site__container">
-                    
+                     
         <Switch>
-          <Route path="/online">
+          <Route path="/online/:roomCode">
             <div className="game__container">
-              <OnlineGame />
+              <OnlineGame mode={mode} />
             </div>
           </Route>
-          <Route path="/picture">
+          <Route path='/random'>
+            <div className='game__container'>
+              <WaitingPage />
+            </div>
+          </Route>
+          <Route path='/join'>
             <div className="game__container">
-              <PicturePage />
+              <JoinPage />
+            </div>
+          </Route>
+          <Route path="/create">
+            <div className="game__container">
+              <CreatePage />
             </div>
           </Route>
           <Route path="/game">
@@ -43,15 +56,20 @@ const App = () => {
             </div>
           </Route>
           <Route path="/solo">
-            <div className="game__container">
-              <SoloGame />
-            </div>
+            <SoloGame />
           </Route>
           <Route path="/about">
             <div className="menu__content--container">
               <div className="menu__content--data">
                 <MenuHeader />
                 <About />
+              </div>
+            </div>
+          </Route>
+          <Route path="/profile/:id">
+            <div className="menu__content--container">
+              <div className="menu__content--data">
+                <JourneyPage/>
               </div>
             </div>
           </Route>

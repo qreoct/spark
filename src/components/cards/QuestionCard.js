@@ -4,12 +4,28 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStar_solid} from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Util from '../utils/utils'
+import Util from '../../utils/utils'
 
-const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
+const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => {
 
   const [isFav, setIsFav] = useState(false);
   const [favIcon, setFavIcon] = useState(faStar);
+  const [col, setColor] = useState(null);
+  const [question, setQuestion] = useState('Loading question...');
+
+  useEffect(() => {
+    if (col == null) {
+      setColor(color);  
+    }
+
+    if (mode === 'this-or-that') {
+      let options = [data.this, data.that];
+      Util.shuffle(options);
+      setQuestion(`${options[0]} or ${options[1]}?`);
+    } else {
+      setQuestion(data.question);
+    }
+  }, [])
   
   const handleFav = (e) => {
     e.preventDefault();
@@ -26,17 +42,16 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
     if (navigator.share) {
       navigator.share({
         title: 'SPARK Meaningful Conversations',
-        text: data.question,
+        text: question,
       }).catch((error) => console.log('Error sharing', error))
     } else {
-      navigator.clipboard.writeText(data.question).then(() => {
+      navigator.clipboard.writeText(question).then(() => {
         displayToast('Copied question to clipboard! Share it with your friends!')
       })
     }
   }
 
   useEffect(() => {
-    console.log('is in Favs: ' + data.question   + ' ' + Util.isInFavs(data))
     setIsFav(Util.isInFavs(data));
   },[])
 
@@ -52,11 +67,11 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
       return null;
     } else {
       return (
-        <div className={`game__question-card game__question-card--${color}`}>
-          <p className="game__question-card--title"> {data.question} </p>
+        <div className={`game__question-card --${col}`}>
+          <p className="game__question-card--title disable--select"> {question} </p>
 
           {isFavoritible 
-            ? <div className="game__question-card--icons-container"> 
+            ? <div className="game__question-card--icons-container disable--select"> 
               <FontAwesomeIcon icon={favIcon} className="game__question-card--icon" size='3x'
                 onClick={handleFav} 
                 onTouchEnd={handleFav}
@@ -80,4 +95,4 @@ const Question = ({data, isFavoritible=true, color='cyan', displayToast}) => {
   );
 };
 
-export default Question;
+export default QuestionCard;
