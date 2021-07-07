@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import QuestionCard from './QuestionCard';
 import PictureCard from './PictureCard';
 import {Card, CardWrapper} from 'react-swipeable-cards';
+import ProgressBar from './ProgressBar';
 
 const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
 
@@ -30,17 +31,20 @@ const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
   }
 
   return (
-    <CardWrapper className="game__question-card--container">
-      {qnList.map((q, idx) => 
-        <Card key={q.id} onSwipe={handleSwipe} style={clearStyle}>
-          {q.canPicture 
-            ? <PictureCard topic={q.topic} data={q} isActive={idx===0} mode={mode}/>
-            : <QuestionCard data={q} isFavoritible={isFavoritible} displayToast={displayToast}
-              color={colors[Math.floor(Math.random() * colors.length)]} mode={mode}/>
-          }
-        </Card>
-      )}
-    </CardWrapper>
+    <div>
+      {mode === 'story'? <ProgressBar color={colors[Math.floor(Math.random() * colors.length)]} completed = {(index-1)*10} /> : null}
+      <CardWrapper className="game__question-card--container">
+        {qnList.map((q, idx) => 
+          <Card key={q.id} onSwipe={handleSwipe} style={clearStyle}>
+            {q.canPicture 
+              ? <PictureCard topic={q.topic} data={q} isActive={idx===0} mode={mode}/>
+              : <QuestionCard data={q} isFavoritible={isFavoritible} displayToast={displayToast}
+                color={colors[Math.floor(Math.random() * colors.length)]} mode={mode}/>
+            }
+          </Card>
+        )}
+      </CardWrapper>
+    </div>
   );
 };
 

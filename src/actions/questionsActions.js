@@ -1,34 +1,11 @@
 import Util from '../utils/utils';
+
 import questionsService from '../services/questions';
 
-// Actions
-const GET_QUESTION = 'GET_QUESTION';
-const GET_QUESTION_SUCCESS = 'GET_QUESTION_SUCCESS';
-const GET_QUESTION_FAILURE = 'GET_QUESTION_FAILURE';
+export const GET_QUESTION = 'GET_QUESTION';
+export const GET_QUESTION_SUCCESS = 'GET_QUESTION_SUCCESS';
+export const GET_QUESTION_FAILURE = 'GET_QUESTION_FAILURE';
 
-// Reducer
-export const initialState = {
-  questions: [],
-  loading: false,
-  hasErrors: false,
-};
-
-export default function questionsReducer(state = initialState, action) {
-  switch (action.type) {
-
-  case GET_QUESTION:
-    return { ...state, loading: true };
-  case GET_QUESTION_SUCCESS:
-    return {questions: action.payload, loading: false, hasErrors: false };
-  case GET_QUESTION_FAILURE:
-    return {...state, loading: false, hasErrors: true };
-  default:
-    return state;
-
-  }
-}
-
-// Action Creators
 export const getQuestion = () => ({
   type: GET_QUESTION,
 });
@@ -42,7 +19,6 @@ export const getQuestionFailure = () => ({
   type: GET_QUESTION_FAILURE,
 });
 
-// Thunks
 export function fetchQuestion() {
   return async (dispatch) => {
     dispatch(getQuestion());

@@ -27,6 +27,7 @@ const MenuRouter = ({setPage, setMode}) => {
     return (
       <div>
         <div className="menu__router--container">
+          <Link to="/game" onClick={() => {setPage('game'); setMode('story')}}><LinkButton key="Story" title="Story" subtitle="10 progressive questions for 2 players!"></LinkButton></Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('icebreakers')}}> <LinkButton key="Icebreakers" title="Icebreakers" subtitle="Get to know anyone!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('deep')}}> <LinkButton key="Deep" title="Deep Questions" subtitle="Go deep!"/> </Link>
           <Link to="/game" onClick={() => {setPage('game'); setMode('this-or-that')}}> <LinkButton key="ThisOrThat" title="This or That" subtitle="Which will you choose?"/> </Link>
