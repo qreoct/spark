@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import QuestionStack from '../components/cards/QuestionStack';
 import NavBar from '../components/navigation/NavBar';
 
-import {fetchQuestionsFromCategory} from '../actions/questionsActions';
+import {fetchQuestionsFromCategory} from '../reducers/questionsReducer';
 import Util from '../utils/utils';
 
 import logo_deep from '../assets/mode_deep.svg';

@@ -38,10 +38,6 @@ const PictureGallery = ({pictures, isSelectable=false, handleSelect}) => {
                 onMouseUp={(e) => toggleSelect(e, pic)}>
                 <img src={pic.urls.small} alt={pic.alt_description}
                   className={`card__picture--thumb ${(pictures.length === 1) ? 'card__picture--solo' : ''}`}/>
-                {/* <p> Picture by&nbsp;
-                <a href={pic.links.html} className="link">{pic.user.name}</a> from&nbsp;
-                <a href="https://unsplash.com" className="link">Unsplash</a>
-              </p> */}
               </div>
             )}
 
