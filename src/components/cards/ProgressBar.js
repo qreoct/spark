@@ -6,7 +6,8 @@ const ProgressBar = ({ color, completed }) => {
     height: '100%',
     width: `${completed}%`,
     borderRadius: 'inherit',
-    textAlign: 'right'
+    textAlign: 'right',
+    transition: 'width 0.5s ease-in-out'
   }
 
   const labelStyles = {
@@ -16,7 +17,7 @@ const ProgressBar = ({ color, completed }) => {
   }
 
   return (
-    <div >
+    <div>
       <div style={fillerStyles} className={`--${color}`}>
         <span style={labelStyles}>{`${completed}%`}</span>
       </div>
