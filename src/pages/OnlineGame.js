@@ -4,11 +4,13 @@ import '../styles/index.css'
 import Chat from '../components/chat/Chat'
 import socket from '../socket'
 import PictureCard from '../components/cards/PictureCard'
+import ProgressBar from '../components/cards/ProgressBar'
 
 const OnlineGame = ({ mode }) => {
   const [question, setQuestion] = useState('')
   const [questions, setQuestions] = useState([])
   const [index, setIndex] = useState(0)
+  let colors = ['topaz', 'amber', 'amethyst', 'jade'];
   
   useEffect(() => {
     if (questions.length === 0) {
@@ -51,10 +53,13 @@ const OnlineGame = ({ mode }) => {
   }
 
   return (
-    <div className="online__container">
-      {renderQuestion()}
-      <Chat mode={mode} setQuestions={setQuestions} />
-    </div>
+    <>
+      <ProgressBar color={colors[Math.floor(Math.random() * colors.length)]} completed={index*10} />
+      <div className="online__container">
+        {renderQuestion()}
+        <Chat mode={mode} setQuestions={setQuestions} />
+      </div>
+    </>
   )
 }
 
