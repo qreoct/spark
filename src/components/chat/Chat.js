@@ -85,16 +85,18 @@ const Chat = ({ mode, setQuestions }) => {
   }
 
   return (
-    <div className='online__chat-container'>
-      <ChatMessages 
-        user={user} 
-        messages={messages} />
-      <ChatInput 
-        text={text}
-        setText={setText}
-        sendMessage={sendMessage} />
+    <>
+      <div className='online__chat-container'>
+        <ChatMessages 
+          user={user} 
+          messages={messages} />
+        <ChatInput 
+          text={text}
+          setText={setText}
+          sendMessage={sendMessage} />
+      </div> 
       <BackButton action={handleChatBackAction} />
-    </div> 
+    </>
   )
 }
 

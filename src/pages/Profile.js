@@ -13,6 +13,7 @@ const Profile = ({mode, setPage, setMode}) => {
     if (localStorage.getItem('favs')) {
       setFavs(Util.readFavsFromStorage());
     }
+    setMode('profile');
   }, []);
 
   return (

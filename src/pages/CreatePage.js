@@ -42,7 +42,8 @@ const CreatePage = () => {
       <h1>{code}</h1>
       Copy this URL to share with your friends:
       <span className="selectable selectable-text" onClick={copyCode}> <em>{`${BASE_URL}/online/${code}`}</em> </span>
-      <h5>The room will start once one other player joins</h5>
+      <br/>
+      The room will start once one other player joins
       <BackButton />
       <Toastful />
     </div>

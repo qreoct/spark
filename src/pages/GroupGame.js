@@ -51,7 +51,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
 
       {renderMode()}
       <Toastful />
-      <NavBar />
+      <NavBar mode={mode}/>
     </div>
   );
 

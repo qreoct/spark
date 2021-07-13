@@ -11,7 +11,7 @@ const Favourites = ({favs, setPage, setMode}) => {
         <Link to="/game" onClick={() => {setPage('game'); setMode('favourites')}}>
           <div className="profile__container selectable">
             <h1> Favourites </h1>
-          You have {favs.length} favourited cards.
+          You have {favs.length} favourited cards. <span className="selectable-text"> View Favourites &gt; </span>
           </div>
         </Link>
       )

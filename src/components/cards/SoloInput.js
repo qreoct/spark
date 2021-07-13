@@ -4,9 +4,9 @@ import PictureCard from './PictureCard';
 
 const SoloInput = ({data, displayToast, submitHandler}) => {
   let colors = ['jade', 'topaz', 'amethyst', 'amber'];
+  let col = colors[Math.floor(Math.random() * colors.length)];
 
   const [reflection, setReflection] = useState('');
-  const [col, setColor] = useState(colors[Math.floor(Math.random() * colors.length)]);
   const [picData, setData] = useState(null);
   const [selectedPicture, setSelected] = useState(null);
 

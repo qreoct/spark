@@ -1,11 +1,10 @@
 import React from 'react';
 
-const ProgressBar = ({ color, completed }) => {
+const ProgressBar = ({ completed }) => {
 
   const fillerStyles = {
     height: '100%',
     width: `${completed}%`,
-    borderRadius: 'inherit',
     textAlign: 'right',
     transition: 'width 0.5s ease-in-out'
   }
@@ -18,7 +17,7 @@ const ProgressBar = ({ color, completed }) => {
 
   return (
     <div>
-      <div style={fillerStyles} className={`--${color}`}>
+      <div style={fillerStyles} className={'--spark'}>
         <span style={labelStyles}>{`${completed}%`}</span>
       </div>
     </div>

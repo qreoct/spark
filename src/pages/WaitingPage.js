@@ -39,8 +39,10 @@ const WaitingPage = () => {
   return (
     <div className="online__container">
       <MenuHeader />
-      <h1>Waiting for players...</h1>
-      <h5>The room will start once one other player joins</h5>
+      <h1 className="loading">Waiting for players</h1>
+      <br/>
+      The room will start once one other player joins.
+      <br/>
       <BackButton action={handleBackAction} />
     </div>
   )

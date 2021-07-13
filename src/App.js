@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch, Route
@@ -24,6 +24,17 @@ const App = () => {
   const navigate = (target) => {
     setPage(target);
   };
+
+  useEffect(() => {
+    // reset for Milestone 3
+    if (localStorage.getItem('m3')) {
+      return
+    } else {
+      localStorage.setItem('solo_index', '0')
+      localStorage.removeItem('solo_questions')
+      localStorage.setItem('m3', 'true');
+    }
+  }, [])
 
   return (
     <Router>
@@ -56,7 +67,7 @@ const App = () => {
             </div>
           </Route>
           <Route path="/solo">
-            <SoloGame />
+            <SoloGame setMode={setMode}/>
           </Route>
           <Route path="/about">
             <div className="menu__content--container">

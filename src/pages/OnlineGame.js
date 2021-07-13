@@ -10,7 +10,6 @@ const OnlineGame = ({ mode }) => {
   const [question, setQuestion] = useState('')
   const [questions, setQuestions] = useState([])
   const [index, setIndex] = useState(0)
-  let colors = ['topaz', 'amber', 'amethyst', 'jade'];
   
   useEffect(() => {
     if (questions.length === 0) {
@@ -54,7 +53,7 @@ const OnlineGame = ({ mode }) => {
 
   return (
     <>
-      <ProgressBar color={colors[Math.floor(Math.random() * colors.length)]} completed={index*10} />
+      <ProgressBar completed={index*10} />
       <div className="online__container">
         {renderQuestion()}
         <Chat mode={mode} setQuestions={setQuestions} />
