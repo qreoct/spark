@@ -365,7 +365,7 @@ small,
   position: fixed;
   left: 50%;
   top: 0;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 20vh);
   border-radius: 20px;
   padding: 40px 35px 10px 45px;
   width: 30vw;

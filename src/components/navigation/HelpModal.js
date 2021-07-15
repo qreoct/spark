@@ -37,7 +37,7 @@ const HelpModal = ({mode, setInvisible}) => {
     title = 'Story'
     content = 'Welcome to Story mode! Swipe the cards to reveal more Questions! \n\n' +
     'Story mode is about getting to know someone on a different level. Answer 10 questions in total, which get progressively more personal, and learn about one another in the process. \n\n' +
-    'For each question, choose one player to be the Question Asker, while the other player answers. Swap over at every question.'
+    'Take turns asking and answering each question as you progress through this mode!'
     break;
   case 'this-or-that':
     title = 'This or That'
