@@ -22,6 +22,12 @@ const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => 
       let options = [data.this, data.that];
       Util.shuffle(options);
       setQuestion(`${options[0]} or ${options[1]}?`);
+    } else if (mode==='story') {
+      if (data.questionAlt){
+        setQuestion(data.questionAlt);
+      } else {
+        setQuestion(data.question);
+      }
     } else {
       setQuestion(data.question);
     }
