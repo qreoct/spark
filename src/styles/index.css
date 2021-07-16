@@ -148,6 +148,7 @@ small,
   width: 100%;
   justify-content: center;
   align-content: center;
+  margin-top: 4px;
 }
 
 .input--button {
@@ -159,7 +160,7 @@ small,
   padding: 0px 20px;
   margin: 10px 10px;
   border: none;
-  width: 30%;
+  width: auto;
 }
 
 .end {
@@ -183,6 +184,7 @@ small,
   background: var(--white);
   color: var(--black);
   padding: 2px 4px;
+  transition: padding 0.4s;
 }
 
 .textarea--solid {
@@ -214,12 +216,38 @@ small,
   align-items: center;
 }
 
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 2500ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 2ch;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 2ch;
+  }
+}
+
 .selected {
   box-shadow: 0 0 30px var(--white);
 }
 
 .disable--select {
   pointer-events: none;
+}
+
+.--spark {
+  background: var(--gradient-spark);
 }
 
 .--amber {
@@ -272,14 +300,32 @@ small,
 }
 
 .menu__linkbutton {
-  background: linear-gradient(25deg, var(--black), var(--orange));
   margin: 30px;
   padding: 15px;
+  transition: all 0.4s;
+}
+
+.menu__linkbutton:after {
+  content: "";
+  margin-top: 5px;
+  height: 5px;
+  width: 90px;
+  display: block;
+  position: absolute;
+  background: var(--gradient-spark);
+  transition: width 0.3s;
+}
+
+.menu__linkbutton:hover {
+}
+.menu__linkbutton:hover:after {
+  width: 180px;
 }
 
 .menu__linkbutton--title,
 .menu__linkbutton--title:visited {
   font-size: 2.441rem;
+  font-weight: 600;
   line-height: 1.1;
   color: var(--white);
 }
@@ -303,6 +349,35 @@ small,
   color: var(--black);
   background-color: var(--white);
   padding: 5px;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--black);
+  opacity: 0.7;
+}
+
+.modal__content {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 20vh);
+  border-radius: 20px;
+  padding: 40px 35px 10px 45px;
+  width: 30vw;
+  min-width: 360px;
+  min-height: 200px;
+  white-space: pre-wrap;
+  background-color: var(--grey);
+  box-shadow: 0 0 30px var(--black);
+}
+
+.modal__close {
+  margin: 20px 100px;
 }
 
 /*                           profile */
@@ -440,6 +515,7 @@ small,
   width: 10%;
   max-width: 7%;
   margin-right: 20px;
+  margin-left: 20px;
   justify-content: center;
   align-items: flex-end;
 }

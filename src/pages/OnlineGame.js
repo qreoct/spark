@@ -4,6 +4,7 @@ import '../styles/index.css'
 import Chat from '../components/chat/Chat'
 import socket from '../socket'
 import PictureCard from '../components/cards/PictureCard'
+import ProgressBar from '../components/cards/ProgressBar'
 
 const OnlineGame = ({ mode }) => {
   const [question, setQuestion] = useState('')
@@ -51,10 +52,13 @@ const OnlineGame = ({ mode }) => {
   }
 
   return (
-    <div className="online__container">
-      {renderQuestion()}
-      <Chat mode={mode} setQuestions={setQuestions} />
-    </div>
+    <>
+      <ProgressBar completed={index*10} />
+      <div className="online__container">
+        {renderQuestion()}
+        <Chat mode={mode} setQuestions={setQuestions} />
+      </div>
+    </>
   )
 }
 

@@ -7,13 +7,13 @@ const getAllQuestions = async () => {
   const res = await axios.get(baseUrl);
 
   // right now it's received in an array
-  return res.data;
+  return Util.shuffle(res.data);
 };
 
 const getAllQuestionsFromCategory = async (category) => {
   const res = await axios.get(baseUrl + '/' + category);
 
-  return res.data;
+  return Util.shuffle(res.data);
 };
 
 const getQuestionsFromCategory = async (category, ...args) => {

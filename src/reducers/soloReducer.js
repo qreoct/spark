@@ -108,6 +108,18 @@ export function fetchSoloQuestions() {
   }
 }
 
+export function writeNewSoloQuestions() {
+  return async (dispatch) => {
+    try {
+      let res = await questionsService.getSoloQuestions();
+      localStorage.setItem('solo_questions', JSON.stringify(res));
+      dispatch(fetchSoloQuestionsSuccess(res));
+    } catch (error) {
+      dispatch(throwError());
+    }
+  }
+}
+
 export function fetchJourneyFromLocalStorage() {
   return (dispatch) => {
     dispatch(checkSoloStatus());

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import SoloInput from './SoloInput';
 
-import { fetchSoloQuestions } from '../../reducers/soloReducer';
+import { fetchSoloQuestions, writeNewSoloQuestions } from '../../reducers/soloReducer';
 import Util from '../../utils/utils';
 
 const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast}) => {
@@ -27,9 +27,11 @@ const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast}) => {
     setIndex(index+1);
     localStorage.setItem('solo_index', (index+1).toString());
 
-    // write new timestamp
+    // write new timestamp, reset index, fetch tomorrow's questions
     if((index+1)==questions.length){
       Util.setSoloTimestamp();
+      localStorage.setItem('solo_index', (0).toString());
+      dispatch(writeNewSoloQuestions());
     }
   }
 

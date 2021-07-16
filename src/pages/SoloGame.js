@@ -12,7 +12,7 @@ import { Toastful, toastful } from 'react-toastful';
 import { checkSoloReady } from '../reducers/soloReducer';
 
 
-const SoloGame = ({dispatch, soloReady, loading, hasError}) => {
+const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
 
   const [stage, setStage] = useState('menu')
 
@@ -53,7 +53,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError}) => {
         <div className="solo__welcome">
           <p className="card__picture--question"> Welcome to Solo mode! </p>
           <p> Every day, you&apos;ll receive 3 thought provoking questions. 
-          Write down answers that will be saved to your personal <Link className="text__link" to="/profile"> Journey </Link> </p>
+          Write down answers that will be saved to your personal <Link className="text__link" to="/profile" onClick={setMode('profile')}> Journey </Link> </p>
           <p> <strong>NOTE:</strong> We do not store any of your data on servers.
         It is all stored in your local browser storage. </p>
           {renderStart()}
@@ -71,7 +71,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError}) => {
       {renderSolo()}
 
       <Toastful />
-      <NavBar />
+      <NavBar mode='solo'/>
     </div>
   );
 

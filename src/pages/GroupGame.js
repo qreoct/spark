@@ -5,7 +5,6 @@ import QuestionStack from '../components/cards/QuestionStack';
 import NavBar from '../components/navigation/NavBar';
 
 import {fetchQuestionsFromCategory} from '../reducers/questionsReducer';
-import Util from '../utils/utils';
 
 import logo_deep from '../assets/mode_deep.svg';
 import logo_icebreakers from '../assets/mode_icebreakers.svg';
@@ -25,7 +24,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
     if (loading) return <div className="flex-center"> <p> Loading game... </p> </div>;
     if (hasErrors) return <div className="flex-center"> <p> An error occured. Please try again. </p> </div>;
     
-    return <QuestionStack questions={Util.shuffle(questions)} mode={mode}
+    return <QuestionStack questions={questions} mode={mode}
       isFavoritible={true} displayToast={displayToast}/>
   };
 
@@ -52,7 +51,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
 
       {renderMode()}
       <Toastful />
-      <NavBar />
+      <NavBar mode={mode}/>
     </div>
   );
 
