@@ -73,7 +73,7 @@ const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => 
       return null;
     } else {
       return (
-        <div className={`game__question-card --${col}`}>
+        <div data-testid="question-card" className={`game__question-card --${col}`}>
           <p className="game__question-card--title disable--select"> {question} </p>
 
           {isFavoritible 

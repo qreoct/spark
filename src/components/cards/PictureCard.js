@@ -49,7 +49,7 @@ const PictureCard = ({topic, data, isActive, mode, isSelectable=false, handleSel
   };
 
   return (
-    <div className={`card__picture ${isActive ? 'active' : 'inactive'} ${isSelectable ? '' : 'disable--select'}`}>
+    <div data-testid="picture-card" className={`card__picture ${isActive ? 'active' : 'inactive'} ${isSelectable ? '' : 'disable--select'}`}>
       <div style={{margin:'20px'}}>
         <p className="card__picture--question"> {question} </p>
       </div>

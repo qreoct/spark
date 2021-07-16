@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PictureGallery = ({pictures, isSelectable=false, handleSelect}) => {
+const PictureGallery = ({pictures=[], isSelectable=false, handleSelect}) => {
 
   const [select, setSelect] = useState(null);
 
@@ -35,7 +35,8 @@ const PictureGallery = ({pictures, isSelectable=false, handleSelect}) => {
                 className={`card__picture--container ${isSelectable ? 'selectable' : ''} 
                 ${(select) ? select.id==pic.id ? 'selected' : '' : ''}`}
                 onTouchEnd={(e) => toggleSelect(e, pic)}
-                onMouseUp={(e) => toggleSelect(e, pic)}>
+                onMouseUp={(e) => toggleSelect(e, pic)}
+                data-testid="gallery-picture">
                 <img src={pic.urls.small} alt={pic.alt_description}
                   className={`card__picture--thumb ${(pictures.length === 1) ? 'card__picture--solo' : ''}`}/>
               </div>

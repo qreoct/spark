@@ -825,6 +825,13 @@ small,
   max-width: 460px;
 }
 
+.msg {
+  display: flex;
+  justify-content: center;
+  padding: 0 5%;
+  margin-top: 3px;
+}
+
 .msg__bubble {
   background: #f3f3f3;
   padding: 0px 15px;
@@ -853,13 +860,6 @@ small,
 .msg--announce {
   color: var(--yellow);
   text-align: center;
-}
-
-.msg {
-  display: flex;
-  justify-content: center;
-  padding: 0 5%;
-  margin-top: 3px;
 }
 
 .msg--send {
