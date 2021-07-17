@@ -4,13 +4,13 @@ describe('Solo Mode journey testing', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it('front page renders', () => {
+  it('front page renders', function() {
     cy.contains('Play')
     cy.contains('Profile')
     cy.contains('About')
   })
 
-  it('visit solo', () => {
+  it('visit solo', function() {
     cy.contains('Profile').click()
     cy.contains('Nothing in Journey yet!').should('be.visible')
     cy.contains('Your daily Solo Questions are ready').should('be.visible')
@@ -53,7 +53,7 @@ describe('Solo Mode journey testing', () => {
     cy.contains('reflection_pic').should('be.visible')
   })
 
-  it('solo next day', () => {
+  it('solo next day', function() {
     cy.contains('Profile').click()
     cy.contains('Nothing in Journey yet!').should('be.visible')
     cy.contains('Your daily Solo Questions are ready').should('be.visible')

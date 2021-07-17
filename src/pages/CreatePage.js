@@ -22,7 +22,7 @@ const CreatePage = () => {
     })
 
     socket.once('joining', (roomCode) => {
-      socket.isHost = true
+      //socket.isHost = true
       history.push(`/online/${roomCode}`)
     })
   }, [])

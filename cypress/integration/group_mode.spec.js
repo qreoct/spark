@@ -4,13 +4,13 @@ describe('Group mode journey testing', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it('front page renders', () => {
+  it('front page renders', function() {
     cy.contains('Play').should('be.visible')
     cy.contains('Profile').should('be.visible')
     cy.contains('About').should('be.visible')
   })
 
-  it('visit icebreakers', () => {
+  it('visit icebreakers', function() {
     cy.contains('Profile').click()
     cy.contains('You have no favourited cards.').should('be.visible')
     cy.contains('back').click()

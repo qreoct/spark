@@ -4,27 +4,27 @@ describe('Spark app menu navigation', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it('front page renders', () => {
+  it('front page renders', function() {
     cy.contains('Play').should('be.visible')
     cy.contains('Profile').should('be.visible')
     cy.contains('About').should('be.visible')
   })
 
-  it('navigate about', () => {
+  it('navigate about', function() {
     cy.contains('About').click()
     cy.contains('About').should('be.visible')
     cy.contains('Privacy').should('be.visible')
     cy.contains('back').click()
   })
 
-  it('navigate profile', () => {
+  it('navigate profile', function() {
     cy.contains('Profile').click()
     cy.contains('Profile').should('be.visible')
     cy.contains('My Profile').should('be.visible')
     cy.contains('back').click()
   })
 
-  it('navigate menu', () => {
+  it('navigate menu', function() {
     cy.contains('Play').click()
     cy.contains('Group').click()
     cy.contains('Icebreakers').should('be.visible')
