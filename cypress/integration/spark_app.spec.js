@@ -5,36 +5,35 @@ describe('Spark app menu navigation', () => {
   })
 
   it('front page renders', () => {
-    cy.contains('Play')
-    cy.contains('Profile')
-    cy.contains('About')
+    cy.contains('Play').should('be.visible')
+    cy.contains('Profile').should('be.visible')
+    cy.contains('About').should('be.visible')
   })
 
   it('navigate about', () => {
     cy.contains('About').click()
-    cy.contains('About')
-    cy.contains('Privacy')
+    cy.contains('About').should('be.visible')
+    cy.contains('Privacy').should('be.visible')
     cy.contains('back').click()
   })
 
   it('navigate profile', () => {
     cy.contains('Profile').click()
-    cy.contains('Profile')
-    cy.contains('My Profile')
+    cy.contains('Profile').should('be.visible')
+    cy.contains('My Profile').should('be.visible')
     cy.contains('back').click()
   })
 
   it('navigate menu', () => {
     cy.contains('Play').click()
     cy.contains('Group').click()
-    cy.contains('Icebreakers')
+    cy.contains('Icebreakers').should('be.visible')
     cy.contains('back').click()
     cy.contains('Online').click()
     cy.contains('Random').click()
     cy.contains('back').click()
     cy.contains('Play').click()
     cy.contains('Solo').click()
-    cy.contains('close').click()
     cy.contains('back').click()
   })
 })

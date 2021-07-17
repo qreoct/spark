@@ -1,6 +1,6 @@
 {
   "name": "spark",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "cypress:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:test": "cypress run --config video=false"
   },
   "eslintConfig": {
     "extends": [
