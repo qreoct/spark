@@ -25,6 +25,7 @@ describe('Online mode journey testing', () => {
     cy.contains('Play').click()
     cy.contains('Online').click()
     cy.contains('Random').click()
+    cy.contains('Waiting for players')
     cy.contains('Welcome to the chat! Please be nice!')
     cy.contains('online question lv 1')
     cy.contains('back').click()
