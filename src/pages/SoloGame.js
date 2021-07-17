@@ -71,7 +71,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
       {renderSolo()}
 
       <Toastful />
-      <NavBar mode='solo'/>
+      <NavBar mode={stage==='menu' ? 'profile' : 'solo'}/>
     </div>
   );
 

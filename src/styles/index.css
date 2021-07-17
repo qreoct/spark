@@ -490,6 +490,7 @@ small,
 
 .navbar {
   display: flex;
+  flex-shrink: 0;
   width: 100%;
   height: 10vh;
   min-height: 120px;
@@ -507,7 +508,7 @@ small,
 }
 
 .game__navbar {
-  position: absolute;
+  position: sticky;
 }
 
 .game__navbar--back {
@@ -577,6 +578,8 @@ small,
 
 .solo {
   height: 95%;
+  display: flex;
+  flex-direction: column;
 }
 
 .solo__welcome {
@@ -590,6 +593,7 @@ small,
 
 .solo__input {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -628,11 +632,11 @@ small,
 }
 
 .card__picture--thumb {
-  border: 15px solid;
+  border: 10px solid;
   border-image-slice: 1;
   border-image-source: var(--gradient-amethyst);
-  max-width: 25vw;
-  max-height: 30vh;
+  max-width: 24vw;
+  max-height: 28vh;
 }
 /* 
 .card__picture--solo {

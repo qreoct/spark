@@ -24,7 +24,7 @@ const SoloInput = ({data, displayToast, submitHandler}) => {
         picture: picData || null
       });
       setReflection('');
-      displayToast('Response Submitted!');
+      displayToast('Response submitted!');
     }
   }
 
