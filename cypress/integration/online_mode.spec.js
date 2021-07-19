@@ -44,5 +44,6 @@ describe('Online mode journey testing', () => {
     cy.contains('Hello!')
     cy.contains('Next').click()
     cy.contains('Your request to move to next question has been sent to the other user. Please wait for them to click Next')
+    cy.contains('back').click()
   })
 })

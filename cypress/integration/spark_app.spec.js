@@ -31,6 +31,7 @@ describe('Spark app menu navigation', () => {
     cy.contains('back').click()
     cy.contains('Online').click()
     cy.contains('Random').click()
+    cy.contains('online')
     cy.contains('back').click()
     cy.contains('Play').click()
     cy.contains('Solo').click()
