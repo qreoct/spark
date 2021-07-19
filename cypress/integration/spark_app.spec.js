@@ -30,7 +30,7 @@ describe('Spark app menu navigation', () => {
     cy.contains('Icebreakers').should('be.visible')
     cy.contains('back').click()
     cy.contains('Online').click()
-    cy.contains('Random').click()
+    cy.contains('Join').click()
     cy.contains('back').click()
     cy.contains('Play').click()
     cy.contains('Solo').click()

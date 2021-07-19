@@ -33,7 +33,7 @@
     "lint": "eslint .",
     "format": "eslint . --fix",
     "cy:open": "cypress open",
-    "cy:test": "cypress run --config video=false"
+    "cy:test": "cypress run --headless --config video=false --browser firefox"
   },
   "eslintConfig": {
     "extends": [
