@@ -38,7 +38,6 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
     if (soloReady) {
       return (
         <>
-          <p> Hit start to begin! </p>
           <LinkButton title="Start" action={startGame}/>
         </>
       )
@@ -50,8 +49,8 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
   const renderSolo = () => {
     if (stage === 'menu') {
       return (
-        <div className="solo__welcome">
-          <p className="card__picture--question"> Welcome to Solo mode! </p>
+        <div className="solo__welcome" style={{marginBottom:'20vh'}}>
+          <p className="picture-card__question"> Welcome to Solo mode! </p>
           <p> Every day, you&apos;ll receive 3 thought provoking questions. 
           Write down answers that will be saved to your personal <Link className="text__link" to="/profile" onClick={setMode('profile')}> Journey </Link> </p>
           <p> <strong>NOTE:</strong> We do not store any of your data on servers.

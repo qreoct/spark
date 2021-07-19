@@ -18,7 +18,7 @@ const Profile = ({mode, setPage, setMode}) => {
 
   return (
     <div>
-      <div className="game__profile--container">
+      <div className="profile">
         <h1> My Profile </h1>
 
         <div> 

@@ -29,23 +29,23 @@ const PictureGallery = ({pictures=[], isSelectable=false, handleSelect}) => {
     } else {
       return (
         <>
-          <div className="card__picture--gallery">
+          <div className="picture-card__gallery">
             {pictures.map(pic => 
               <div key={pic.id} 
-                className={`card__picture--container ${isSelectable ? 'selectable' : ''} 
+                className={`picture-card__container ${isSelectable ? 'selectable' : ''} 
                 ${(select) ? select.id==pic.id ? 'selected' : '' : ''}`}
                 onTouchEnd={(e) => toggleSelect(e, pic)}
                 onMouseUp={(e) => toggleSelect(e, pic)}
                 data-testid="gallery-picture">
                 <img src={pic.urls.small} alt={pic.alt_description}
-                  className={`card__picture--thumb ${(pictures.length === 1) ? 'card__picture--solo' : ''}`}/>
+                  className={`picture-card__thumb ${(pictures.length === 1) ? 'picture-card__solo' : ''}`}/>
               </div>
             )}
 
           </div>
         
           <div>
-            {isSelectable ? <button onClick={submitSelect} className="input--button --amethyst selectable"> Select </button> : null}
+            {isSelectable ? <button onClick={submitSelect} className="input--button h5-size bold --amethyst selectable"> Select </button> : null}
           </div>
         </>
       );

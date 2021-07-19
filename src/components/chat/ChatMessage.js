@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
 
-const ChatMessage = ({user, content, from, to}) => {
+const ChatMessage = ({user, content, from}) => {
 
   const renderMessage = () => {
     if (from === user) {
