@@ -20,7 +20,6 @@
     "react-swipeable-cards": "^1.0.6",
     "react-toastful": "^0.3.2",
     "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "socket.io-client": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -28,13 +27,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose --runInBand",
     "coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "format": "eslint . --fix",
     "cy:open": "cypress open",
-    "cy:test": "cypress run --config video=false"
+    "cy:test": "cypress run --headless --config video=false --browser firefox"
   },
   "eslintConfig": {
     "extends": [
@@ -60,7 +59,8 @@
     "eslint": "^7.26.0",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-react": "^7.23.2",
-    "react": "^16.14.0"
+    "react": "^16.14.0",
+    "redux-devtools-extension": "^2.13.9"
   },
   "proxy": "http://localhost:3003/"
 }

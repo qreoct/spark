@@ -34,7 +34,7 @@ const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
   return (
     <div>
       {mode === 'story'? <ProgressBar completed={(index-1)*10} /> : null}
-      <CardWrapper className="game__question-card--container">
+      <CardWrapper className="question-card__container">
         {qnList.map((q, idx) => 
           <Card key={q.id} onSwipe={handleSwipe} style={clearStyle}>
             {q.canPicture 

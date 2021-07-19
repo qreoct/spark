@@ -29,7 +29,7 @@ const HelpButton = ({mode}) => {
         : null
       }
 
-      <div className="game__navbar--back">
+      <div className="navbar__button-container">
         <div className="menu__linkbutton--back"
           onMouseUp={handleClick}
           onTouchEnd={handleClick}> help </div> 

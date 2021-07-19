@@ -7,7 +7,7 @@ const ChatInput = ({ text, setText, sendMessage, prompt='Type a message' }) => {
     <form className='input--form' onSubmit={sendMessage}>
       <input 
         autoFocus
-        className='textarea--border'
+        className='textarea'
         type='text'
         placeholder={prompt}
         value={text}
