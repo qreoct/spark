@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --verbose --runInBand",
     "coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "cypress": "^7.7.0",
     "cypress-localstorage-commands": "^1.4.5",
     "eslint": "^7.26.0",

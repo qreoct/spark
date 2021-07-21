@@ -3,7 +3,6 @@ import QuestionCard from './QuestionCard';
 import PictureCard from './PictureCard';
 import {Card, CardWrapper} from 'react-swipeable-cards';
 import ProgressBar from './ProgressBar';
-import Confetti from '../utils/Confetti';
 
 const QuestionStack = ({questions, mode, isFavoritible, displayToast}) => {
 
