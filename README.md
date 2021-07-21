@@ -6,7 +6,7 @@ SPARK is a project created for National University of Singapore (NUS) Orbital 20
 
 This repository contains the frontend for SPARK. Our backend repository is at [spark-backend](https://github.com/tanruiquan/spark-backend)
 
-Spark was created by [@qreoct](https://github.com/qreoct) and [@tanruiquan](https:github.com/tanruiquan)
+Spark was created by [@qreoct](https://github.com/qreoct) and [@tanruiquan](https://github.com/tanruiquan)
 
 ## Features
 

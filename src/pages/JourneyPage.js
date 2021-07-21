@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 import { useParams } from 'react-router';
 
-import '../styles/index.css';
 import { fetchJourneyFromLocalStorage } from '../reducers/soloReducer.js';
 
 const JourneyPage = ({dispatch, journey}) => {
@@ -21,7 +20,7 @@ const JourneyPage = ({dispatch, journey}) => {
     <div>
       <JourneyEntry data={journey[id]}/>
 
-      <div className="menu__navigation--container">
+      <div className="menu__navigation-container">
         <BackButton />
       </div>
     </div>

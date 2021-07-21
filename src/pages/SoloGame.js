@@ -4,10 +4,10 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import '../styles/index.css';
 import NavBar from '../components/navigation/NavBar';
 import LinkButton from '../components/navigation/LinkButton';
 import SoloStack from '../components/cards/SoloStack';
+import Confetti from '../components/utils/Confetti';
 import { Toastful, toastful } from 'react-toastful';
 import { checkSoloReady } from '../reducers/soloReducer';
 
@@ -42,7 +42,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
         </>
       )
     } else {
-      return (<p> You have completed all 3 questions today! Come back tomorrow. </p>)
+      return <Confetti text ={'You have completed all 3 questions today! Come back tomorrow.'} />
     }
   }
 
@@ -58,9 +58,9 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
           {renderStart()}
         </div>
       )
-    } else if (stage === 'game') {
+    } else if (stage === 'game' || stage==='game-end') {
       return (
-        <SoloStack displayToast={displayToast}/>
+        <SoloStack displayToast={displayToast} setStage={setStage}/>
       )
     }
   };
@@ -68,9 +68,8 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
   return (
     <div className="solo">
       {renderSolo()}
-
       <Toastful />
-      <NavBar mode={stage==='menu' ? 'profile' : 'solo'}/>
+      <NavBar mode={stage==='game' ? 'solo' : 'profile'}/>
     </div>
   );
 

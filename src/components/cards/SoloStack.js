@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import SoloInput from './SoloInput';
+import Confetti from '../utils/Confetti';
 
 import { fetchSoloQuestions, writeNewSoloQuestions } from '../../reducers/soloReducer';
 import Util from '../../utils/utils';
 
-const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast}) => {
+const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast, setStage}) => {
 
   const [index, setIndex] = useState(0);
 
@@ -36,7 +37,8 @@ const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast}) => {
   }
 
   const renderEnd = () => {
-    return <p> That&apos;s all the questions for today! Your responses are saved in your Journey. </p>
+    setStage('game-end')
+    return <Confetti text={'That\'s all the questions for today! Your responses are saved in your Journey.'} />
   }
 
   const renderStack = () => {

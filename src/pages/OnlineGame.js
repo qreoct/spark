@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/index.css'
 
 import Chat from '../components/chat/Chat'
 import socket from '../socket'

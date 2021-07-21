@@ -4,8 +4,6 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import '../../styles/index.css';
-
 import { checkSoloReady, fetchJourneyFromLocalStorage } from '../../reducers/soloReducer';
 import Util from '../../utils/utils';
 

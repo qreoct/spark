@@ -10,7 +10,6 @@ import logo_deep from '../assets/mode_deep.svg';
 import logo_icebreakers from '../assets/mode_icebreakers.svg';
 import logo_thisorthat from '../assets/mode_thisorthat.svg';
 
-import '../styles/index.css';
 import { toastful, Toastful } from 'react-toastful';
 
 

@@ -2,7 +2,6 @@ import React from 'react';
 
 import Util from '../../utils/utils'
 
-import '../../styles/index.css';
 
 const JourneyEntry = ({data}) => {
 

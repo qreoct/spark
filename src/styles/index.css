@@ -271,17 +271,16 @@ button {
 .disable--select {
   pointer-events: none;
 }
-
 /*                                menu */
 
-.menu__sparklogo--container {
+.menu__sparklogo-container {
   display: flex;
   height: 20vh;
   align-items: center;
   justify-content: center;
 }
 
-.menu__content--container {
+.menu__content-container {
   flex-direction: column;
   display: flex;
   height: 90vh;
@@ -289,14 +288,14 @@ button {
   min-width: 350px; /* for mobile */
 }
 
-.menu__navigation--container {
+.menu__navigation-container {
   display: flex;
   height: 10vh;
   align-items: center;
   justify-content: center;
 }
 
-.menu__router--container a {
+.menu__router-container a {
   text-decoration: none;
 }
 
