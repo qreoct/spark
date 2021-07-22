@@ -19,7 +19,6 @@ import JourneyPage from './pages/JourneyPage';
 const App = () => {
 
   const [page, setPage] = useState('home');
-  const [mode, setMode] = useState('none');
 
   const navigate = (target) => {
     setPage(target);
@@ -43,7 +42,7 @@ const App = () => {
         <Switch>
           <Route path="/online/:roomCode">
             <div className="game__container">
-              <OnlineGame mode={mode} />
+              <OnlineGame />
             </div>
           </Route>
           <Route path='/random'>
@@ -63,11 +62,11 @@ const App = () => {
           </Route>
           <Route path="/game">
             <div className="game__container">
-              <GroupGame mode={mode}/>
+              <GroupGame />
             </div>
           </Route>
           <Route path="/solo">
-            <SoloGame setMode={setMode}/>
+            <SoloGame />
           </Route>
           <Route path="/about">
             <div className="menu__content-container">
@@ -87,7 +86,7 @@ const App = () => {
           <Route path="/profile">
             <div className="menu__content-container">
               <div className="menu__content--data">
-                <Profile mode={mode} setPage={navigate} setMode={setMode}/>
+                <Profile setPage={navigate} />
               </div>
             </div>
           </Route>
@@ -95,7 +94,7 @@ const App = () => {
             <div className="menu__content-container">
               <div className="menu__content--data">
                 <MenuHeader />
-                <MenuRouter setPage={navigate} setMode={setMode}/>
+                <MenuRouter setPage={navigate} />
               </div>
             </div>
           </Route>

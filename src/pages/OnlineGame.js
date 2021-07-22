@@ -5,10 +5,17 @@ import socket from '../socket'
 import PictureCard from '../components/cards/PictureCard'
 import ProgressBar from '../components/cards/ProgressBar'
 
-const OnlineGame = ({ mode }) => {
+import {connect} from 'react-redux';
+import {fetchCurrentMode} from '../reducers/modeReducer';
+
+const OnlineGame = ({ dispatch, mode }) => {
   const [question, setQuestion] = useState('')
   const [questions, setQuestions] = useState([])
   const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    dispatch(fetchCurrentMode());
+  }, [dispatch]);
   
   useEffect(() => {
     if (questions.length === 0) {
@@ -61,4 +68,8 @@ const OnlineGame = ({ mode }) => {
   )
 }
 
-export default OnlineGame
+const mapStateToProps = (state) => ({
+  mode: state.mode.mode
+});
+
+export default connect(mapStateToProps)(OnlineGame);

@@ -6,15 +6,21 @@ import Confetti from '../utils/Confetti';
 
 import { fetchSoloQuestions, writeNewSoloQuestions } from '../../reducers/soloReducer';
 import Util from '../../utils/utils';
+import { setCurrentMode } from '../../reducers/modeReducer';
 
-const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast, setStage}) => {
+const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast, setStage }) => {
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     dispatch(fetchSoloQuestions());
+    setMode('solo');
     setIndex(Number(localStorage.getItem('solo_index')));
   }, [dispatch]);
+
+  const setMode = (mode) => {
+    dispatch(setCurrentMode(mode))
+  }
 
   const submitHandler = (content) => {
     // write to reflections
@@ -37,7 +43,8 @@ const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast, setSt
   }
 
   const renderEnd = () => {
-    setStage('game-end')
+    setStage('game-end');
+    setMode('profile');
     return <Confetti text={'That\'s all the questions for today! Your responses are saved in your Journey.'} />
   }
 
@@ -50,11 +57,9 @@ const SoloStack = ({dispatch, loading, questions, hasErrors, displayToast, setSt
       if (index==questions.length) { return renderEnd() }
       else{
         return (
-          <>
-            <SoloInput key={index} data={questions[index]}
-              displayToast={displayToast}
-              submitHandler={submitHandler}/>
-          </>
+          <SoloInput key={index} data={questions[index]}
+            displayToast={displayToast}
+            submitHandler={submitHandler}/>
         )
       }
       
