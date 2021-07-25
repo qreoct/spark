@@ -33,14 +33,12 @@ export const setModeSuccess = (mode) => ({
 // Thunks
 export function fetchCurrentMode() {
   return (dispatch) => {
-    console.log('fetching current mode!')
     dispatch(getMode());
   }
 }
 
 export function setCurrentMode(mode) {
   return (dispatch) => {
-    console.log('setting current mode to ', mode);
     dispatch(setModeSuccess(mode));
   };
 }

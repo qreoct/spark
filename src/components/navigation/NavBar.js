@@ -11,7 +11,6 @@ const NavBar = ({dispatch, mode}) => {
 
   useEffect(() => {
     dispatch(fetchCurrentMode());
-    console.log('navbar mode', mode);
   }, [dispatch])
 
   let type = mode === 'profile' ? 'profile' : 'game';
