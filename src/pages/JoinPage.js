@@ -20,6 +20,7 @@ const JoinPage = () => {
       if (error) {
         alert(error)
       } else {
+        socket.isHost = true
         history.push(`/online/${inputCode}`)
       }
     })

@@ -4,8 +4,6 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import '../../styles/index.css';
-
 import { checkSoloReady, fetchJourneyFromLocalStorage } from '../../reducers/soloReducer';
 import Util from '../../utils/utils';
 
@@ -25,18 +23,18 @@ const JourneyStack = ({dispatch, soloReady, journey}) => {
           {!journey || journey.length == 0
             ? <p> Nothing in Journey yet! Play <Link className="text__link" to="/solo">Solo Mode</Link> to record your reflections. </p>
             : journey.map((j, idx) => 
-              <Link to= {`/profile/${idx}`} key={idx} className="profile__journey-entry--preview">
-                <span className="profile__journey-entry--preview-date">
+              <Link to= {`/profile/${idx}`} key={idx} className="journey__preview">
+                <span className="journey__preview-date">
                   <span className="day">{new Date(j.timestamp).getDate()}</span>
                   {Util.timestampToMM(j.timestamp)}
                 </span>
-                <span className="preview-reflection"> 
+                <span className="journey__preview-reflection"> 
                   <strong> {j.question} </strong> <br/>
                   <span> {j.reflection} </span>
                 </span>
                 {j.picture ? 
-                  <div className="picc">
-                    <img src={j.picture.pic.urls.small} className="profile__journey-entry--preview-pic" />
+                  <div>
+                    <img src={j.picture.pic.urls.small} className="journey__preview-pic" />
                   </div>
                   : null }
               </Link>

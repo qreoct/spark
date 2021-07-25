@@ -73,16 +73,16 @@ const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => 
       return null;
     } else {
       return (
-        <div className={`game__question-card --${col}`}>
-          <p className="game__question-card--title disable--select"> {question} </p>
+        <div data-testid="question-card" className={`question-card --${col}`}>
+          <p className="question-card__title disable--select"> {question} </p>
 
           {isFavoritible 
-            ? <div className="game__question-card--icons-container disable--select"> 
-              <FontAwesomeIcon icon={favIcon} className="game__question-card--icon" size='3x'
+            ? <div className="question-card__icons-container disable--select"> 
+              <FontAwesomeIcon icon={favIcon} className="question-card__icon" size='3x'
                 onClick={handleFav} 
                 onTouchEnd={handleFav}
                 title={isFav ? 'Remove from favourites' : 'Add to favourites'} />
-              <FontAwesomeIcon icon={faShareAlt} className="game__question-card--icon" size='3x'
+              <FontAwesomeIcon icon={faShareAlt} className="question-card__icon" size='3x'
                 onClick={handleShare} 
                 onTouchEnd={handleShare}
                 title="Share" />
@@ -95,7 +95,7 @@ const QuestionCard = ({data, isFavoritible=true, color, displayToast, mode}) => 
   };
 
   return (
-    <div className="game__question-card--content-container">
+    <div className="question-card__content-container">
       {renderQuestion()}
     </div>
   );

@@ -70,7 +70,7 @@ const App = () => {
             <SoloGame setMode={setMode}/>
           </Route>
           <Route path="/about">
-            <div className="menu__content--container">
+            <div className="menu__content-container">
               <div className="menu__content--data">
                 <MenuHeader />
                 <About />
@@ -78,21 +78,21 @@ const App = () => {
             </div>
           </Route>
           <Route path="/profile/:id">
-            <div className="menu__content--container">
+            <div className="menu__content-container">
               <div className="menu__content--data">
                 <JourneyPage/>
               </div>
             </div>
           </Route>
           <Route path="/profile">
-            <div className="menu__content--container">
+            <div className="menu__content-container">
               <div className="menu__content--data">
                 <Profile mode={mode} setPage={navigate} setMode={setMode}/>
               </div>
             </div>
           </Route>
           <Route path="/">
-            <div className="menu__content--container">
+            <div className="menu__content-container">
               <div className="menu__content--data">
                 <MenuHeader />
                 <MenuRouter setPage={navigate} setMode={setMode}/>

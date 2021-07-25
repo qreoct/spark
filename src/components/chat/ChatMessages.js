@@ -9,7 +9,7 @@ const ChatMessages = ({ user, messages }) => (
         key={index}
         user={user}
         from={message.from}
-        to={message.to}/>)
+      />)
     }
   </ScrollToBottom>
 );

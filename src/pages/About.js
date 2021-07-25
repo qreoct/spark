@@ -1,6 +1,5 @@
 import React from 'react';
 import BackButton from '../components/navigation/BackButton.js';
-import '../styles/index.css';
 
 const About = () => {
 
@@ -22,7 +21,7 @@ const About = () => {
         Note that clearing your browser data leads to loss of game data!
       </p>
 
-      <div className="menu__navigation--container">
+      <div className="menu__navigation-container">
         <BackButton />
       </div>
     </div>

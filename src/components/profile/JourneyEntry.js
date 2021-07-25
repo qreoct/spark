@@ -2,7 +2,6 @@ import React from 'react';
 
 import Util from '../../utils/utils'
 
-import '../../styles/index.css';
 
 const JourneyEntry = ({data}) => {
 
@@ -10,18 +9,18 @@ const JourneyEntry = ({data}) => {
     return (
       <>
         <h1> My Journey </h1>
-        <div className="profile__container entry">
+        <div className="profile__container journey-entry">
           <div>
-            <p className="profile__journey-entry--title"> {data.question} </p>
-            <p className="profile__journey-entry--date"> {Util.timestampToString(data.timestamp)} </p>
+            <p className="journey-entry__title"> {data.question} </p>
+            <p className="journey-entry__date"> {Util.timestampToString(data.timestamp)} </p>
 
             {data.picture ? 
-              <div className="profile__journey-entry--pic-container">
-                <img src={data.picture.pic.urls.small} className="profile__journey-entry--pic"/>
+              <div className="journey__pic-container">
+                <img src={data.picture.pic.urls.small} className="journey-entry__pic"/>
               </div>
               : null }
           </div>
-          <p className="profile__journey-entry--reflection">{data.reflection} </p>
+          <p className="journey-entry__reflection">{data.reflection} </p>
         </div>
       </>
     )

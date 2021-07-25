@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import '../styles/index.css'
 
 import Chat from '../components/chat/Chat'
 import socket from '../socket'
@@ -37,14 +36,14 @@ const OnlineGame = ({ mode }) => {
         {index == questions.length 
           ?
           <>
-            <span className="card__picture--question"> {question} </span>
+            <span className="picture-card__question"> {question} </span>
           </>
           :
           <>       
             {questions.length > 0 && questions[index].canPicture 
               ? <PictureCard topic={questions[index].topic} data={questions[index]} isActive={true} mode={'online'}/>
-              : <span className="card__picture--question"> {question} </span>}
-            <button className="selectable input--button center" onClick={handleClick}> Next </button>
+              : <span className="picture-card__question"> {question} </span>}
+            <button className="selectable input--button h5-size bold center" onClick={handleClick}> Next </button>
           </>
         }
       </div>
