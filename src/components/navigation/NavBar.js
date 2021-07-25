@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../../assets/Logo_conversations.svg';
 import { Link } from 'react-router-dom';
 import BackButton from './BackButton';
 import HelpButton from './HelpButton';
 
-const NavBar = ({mode}) => {
+import {connect} from 'react-redux';
+import { fetchCurrentMode } from '../../reducers/modeReducer';
+
+const NavBar = ({dispatch, mode}) => {
+
+  useEffect(() => {
+    dispatch(fetchCurrentMode());
+  }, [dispatch])
 
   let type = mode === 'profile' ? 'profile' : 'game';
-  console.log('navbar mode', mode);
 
   return (
     <>
@@ -22,4 +28,8 @@ const NavBar = ({mode}) => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+  mode: state.mode.mode
+});
+
+export default connect(mapStateToProps)(NavBar);

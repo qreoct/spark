@@ -7,7 +7,6 @@ const HelpButton = ({mode}) => {
   const [visible,setVisible] = useState(false);
 
   useEffect(() => {
-    console.log('helpmodal useEffect');
     if (Util.hasOnbording(mode)) {
       setVisible(true);
     }

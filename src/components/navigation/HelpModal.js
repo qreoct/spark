@@ -9,7 +9,6 @@ const HelpModal = ({mode, setInvisible}) => {
     setInvisible();
   }
 
-  console.log('mode is ', mode);
   let content;
   let title;
 

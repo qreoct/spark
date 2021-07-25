@@ -4,7 +4,10 @@ import NavBar from '../components/navigation/NavBar';
 import Util from '../utils/utils'
 import JourneyStack from '../components/profile/JourneyStack';
 
-const Profile = ({mode, setPage, setMode}) => {
+import {connect} from 'react-redux';
+import { setCurrentMode } from '../reducers/modeReducer';
+
+const Profile = ({dispatch, mode, setPage}) => {
 
   const [favs, setFavs] = useState([]);
 
@@ -14,6 +17,10 @@ const Profile = ({mode, setPage, setMode}) => {
     }
     setMode('profile');
   }, []);
+
+  const setMode = (mode) => {
+    dispatch(setCurrentMode(mode));
+  }
 
   return (
     <div>
@@ -34,4 +41,8 @@ const Profile = ({mode, setPage, setMode}) => {
 
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  mode: state.solo.mode
+});
+
+export default connect(mapStateToProps)(Profile);

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import QuestionStack from '../components/cards/QuestionStack';
 import NavBar from '../components/navigation/NavBar';
 
+import {fetchCurrentMode} from '../reducers/modeReducer'
 import {fetchQuestionsFromCategory} from '../reducers/questionsReducer';
 
 import logo_deep from '../assets/mode_deep.svg';
@@ -16,6 +17,7 @@ import { toastful, Toastful } from 'react-toastful';
 const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
 
   useEffect(() => {
+    dispatch(fetchCurrentMode());
     dispatch(fetchQuestionsFromCategory(mode));
   }, [dispatch]);
 
@@ -57,6 +59,7 @@ const GroupGame = ({dispatch, loading, questions, hasErrors, mode}) => {
 };
 
 const mapStateToProps = (state) => ({
+  mode: state.mode.mode,
   loading: state.questions.loading,
   questions: state.questions.questions,
   hasErrors: state.questions.hasErrors,

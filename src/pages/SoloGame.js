@@ -10,9 +10,10 @@ import SoloStack from '../components/cards/SoloStack';
 import Confetti from '../components/utils/Confetti';
 import { Toastful, toastful } from 'react-toastful';
 import { checkSoloReady } from '../reducers/soloReducer';
+import { setCurrentMode } from '../reducers/modeReducer';
 
 
-const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
+const SoloGame = ({dispatch, soloReady, loading, hasError }) => {
 
   const [stage, setStage] = useState('menu')
 
@@ -22,6 +23,11 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
 
   const startGame = () => {
     setStage('game');
+    setMode('solo')
+  }
+
+  const setMode = (mode) => {
+    dispatch(setCurrentMode(mode));
   }
 
   const displayToast = (message) => {
@@ -60,7 +66,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
       )
     } else if (stage === 'game' || stage==='game-end') {
       return (
-        <SoloStack displayToast={displayToast} setStage={setStage}/>
+        <SoloStack displayToast={displayToast} setStage={setStage} />
       )
     }
   };
@@ -69,7 +75,7 @@ const SoloGame = ({dispatch, soloReady, loading, hasError, setMode}) => {
     <div className="solo">
       {renderSolo()}
       <Toastful />
-      <NavBar mode={stage==='game' ? 'solo' : 'profile'}/>
+      <NavBar />
     </div>
   );
 

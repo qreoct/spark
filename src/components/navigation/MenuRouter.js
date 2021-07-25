@@ -5,7 +5,14 @@ import {
 import BackButton from './BackButton.js';
 import LinkButton from './LinkButton.js';
 
-const MenuRouter = ({setPage, setMode}) => {
+import {setCurrentMode} from '../../reducers/modeReducer';
+import {connect} from 'react-redux';
+
+const MenuRouter = ({dispatch, setPage}) => {
+
+  const setMode = (mode) => {
+    dispatch(setCurrentMode(mode));
+  }
 
   const [menu, setMenu] = useState('home');
 
@@ -42,7 +49,7 @@ const MenuRouter = ({setPage, setMode}) => {
     return (
       <>
         <div className="menu__router-container">
-          <Link to="/solo" onClick={() => {setPage('solo'); setMode('solo')}}> <LinkButton key="Solo" title="Solo" subtitle="Daily self reflection"/> </Link>
+          <Link to="/solo" onClick={() => {setPage('solo'); setMode('profile')}}> <LinkButton key="Solo" title="Solo" subtitle="Daily self reflection"/> </Link>
           <Link to="/" onClick={() => setMenu('mode')}> <LinkButton key="Group" title="Group" subtitle="Questions for sharing"/> </Link>
           <Link to="/" onClick={() => setMenu('online')}> <LinkButton key="Online" title="Online" subtitle="Play with friends or strangers"/> </Link>
         </div>
@@ -62,4 +69,8 @@ const MenuRouter = ({setPage, setMode}) => {
   }
 };
 
-export default MenuRouter;
+const mapStateToProps = (state) => ({
+  mode: state.mode.mode
+});
+
+export default connect(mapStateToProps)(MenuRouter);

@@ -77,8 +77,6 @@ const checkSoloReady = () => {
   } else {
     const stamp = new Date(JSON.parse(localStorage.getItem('solo')));
     const now = new Date(Date.now());
-    console.log('stamp', stamp)
-    console.log('now', now);
     if (stamp.getDate() !== now.getDate() ||
         stamp.getMonth() !== now.getMonth() ||
         stamp.getUTCFullYear() !== now.getUTCFullYear()) {
@@ -106,7 +104,6 @@ const writeSoloReflection = (content) => {
 }
 
 const hasOnbording = (mode) => {
-  console.log('hasOnboarding', JSON.parse(localStorage.getItem(`onboarding-${mode}`)));
   if(!JSON.parse(localStorage.getItem(`onboarding-${mode}`))){
     localStorage.setItem(`onboarding-${mode}`, 'true');
     return true;

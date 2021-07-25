@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SPARK",
+  "name": "SPARK Meaningful Conversations",
+  "description": "SPARK meaningful connections with great questions",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,15 +12,10 @@
       "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "minimal-ui",
+  "theme_color": "#e5e5e5",
+  "background_color": "#141414"
 }
