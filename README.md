@@ -18,7 +18,9 @@ SPARK is an app about creating meaningful conversations using the power of quest
 - **Group Mode** Spice up your gatherings with Icebreakers, Deep Questions, and many more!
 - **Online Mode** Engage in conversations with friends and strangers with realtime chat! 
 
-Check out our demo [here](https://sparkorbital.herokuapp.com)!
+Check out our **app demo [here](https://sparkorbital.herokuapp.com)**!
+
+Read our **Developer Guide [here](https://drive.google.com/file/d/1rBX3eTu-_Ej0wZ66G5d3ZcEXTdBqhxs4/view?usp=sharing)**.
 
 ## Development
 
